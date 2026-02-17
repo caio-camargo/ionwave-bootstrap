@@ -14,12 +14,22 @@
   "opkit_types": {
     "production": {
       "description": "For repeatedly created deliverables across multiple Trades",
-      "contains": ["Instructions", "Template", "Graded Examples (A/B/C)", "Rubric"],
+      "contains": [
+        "Instructions",
+        "Template",
+        "Graded Examples (A/B/C)",
+        "Rubric"
+      ],
       "example": "Strategic Thesis OpKit, Market Landscape Map OpKit"
     },
     "foundation": {
       "description": "For singular evolving foundational documents",
-      "contains": ["Target document", "Brief", "Design rationale", "Historical record"],
+      "contains": [
+        "Target document",
+        "Brief",
+        "Design rationale",
+        "Historical record"
+      ],
       "example": "Documentation Standards OpKit, Protocol Creation OpKit"
     }
   },
@@ -513,7 +523,27 @@
     }
   },
   "unmapped_tups": {
-    "m1": {"name": "Labor Chain & Deployment", "opkits": ["OK-M1-001"], "migration_note": "Migrated 2026-02-09. 16 tabs → 5 files. 8.6/10. 34 dialogue upgrades (5 critical: misclassification risk, Trustee authority, CM independence, equity instrument, offboarding protocol)."},
+    "m1": {
+      "name": "Labor Chain & Deployment",
+      "opkits": [
+        {
+          "id": "OK-M1-001",
+          "name": "Labor Chain & Deployment OpKit",
+          "type": "production",
+          "file": "data/m1/opkit_labor_chain_and_deployment.md",
+          "components": [
+            "13-step instructions",
+            "grading rubric (A-F)",
+            "scaffold (5 files)",
+            "IonWave graded example (8.6/10)",
+            "adaptation guide (solo founder, franchise, service, high-growth)",
+            "8 universal principles"
+          ],
+          "created": "2026-02-09"
+        }
+      ],
+      "note": "MIGRATED — 16 Danilo tabs → 5 output files. Green-field build. 34 dialogue upgrades (5 critical: misclassification, Trustee authority, CM independence, equity instrument, offboarding). 7-week sprint corrected to 12-week."
+    },
     "m2": {
       "tup_name": "Entity & Legal",
       "opkits": [
@@ -657,7 +687,13 @@
           "name": "Supplement Regulatory Compliance",
           "type": "production",
           "file": "data/m7/opkit_supplement_regulatory_compliance.md",
-          "components": ["6-step pre-launch framework (FDA status, DSHEA label, cGMP verification, FTC marketing audit, compliance systems, attorney review)", "4 compliance checklists (pre-launch marketing audit, compliance budget, 12-month calendar, claims library)", "substantiation hierarchy", "competitor audit framework", "IonWave graded example (8.7/10)"],
+          "components": [
+            "6-step pre-launch framework (FDA status, DSHEA label, cGMP verification, FTC marketing audit, compliance systems, attorney review)",
+            "4 compliance checklists (pre-launch marketing audit, compliance budget, 12-month calendar, claims library)",
+            "substantiation hierarchy",
+            "competitor audit framework",
+            "IonWave graded example (8.7/10)"
+          ],
           "created": "2026-02-10"
         }
       ],
@@ -684,7 +720,10 @@
         }
       ]
     },
-    "m9": {"name": "Ecommerce Infra", "opkits": "MIGRATED - see tup_to_opkit.m9"},
+    "m9": {
+      "name": "Ecommerce Infra",
+      "opkits": "MIGRATED - see tup_to_opkit.m9"
+    },
     "m11": {
       "name": "VSL Production",
       "opkits": [
@@ -693,13 +732,22 @@
           "name": "VSL-as-Trade Production Kit",
           "type": "production",
           "file": "data/m11/opkit_vsl_production.md",
-          "components": ["12-step instructions", "grading rubric (7 criteria: FTC compliance, script structure, hook strength, testing rigor, production quality, financial modeling, iteration system)", "scaffold (2 templates: VSL script + post-mortem)", "IonWave graded example (9.2/10)", "adaptation guide (product types, demographics, platforms)"],
+          "components": [
+            "12-step instructions",
+            "grading rubric (7 criteria: FTC compliance, script structure, hook strength, testing rigor, production quality, financial modeling, iteration system)",
+            "scaffold (2 templates: VSL script + post-mortem)",
+            "IonWave graded example (9.2/10)",
+            "adaptation guide (product types, demographics, platforms)"
+          ],
           "created": "2026-02-09"
         }
       ],
       "note": "MIGRATED — 14 Danilo tabs → 8 output files. 15 dialogue upgrades (D2C Creative Director, Performance Media Buyer, FTC Compliance Attorney). Key: VSL-as-Trade framework (testable thesis, kill criteria, portfolio strategy). FTC compliance rigorously documented (fictional testimonials flagged, substantiation gaps explicit). Winner rate adjusted to industry standard (10-20%)."
     },
-    "m12": {"name": "Ad Creative", "opkits": "TBD - pending migration"},
+    "m12": {
+      "name": "Ad Creative",
+      "opkits": "TBD - pending migration"
+    },
     "m13": {
       "name": "Media Buying",
       "opkits": [
@@ -708,16 +756,34 @@
           "name": "Media Buying System Kit",
           "type": "production",
           "file": "data/m13/opkit_media_buying.md",
-          "components": ["5-step instructions (Choose Entry Point → Build Core Docs → Channel Economics → Creative Systems → Risk Management)", "grading rubric (5 dimensions: Account Structure, Attribution Stack, Scaling Protocol, Daily Operations, Channel Economics)", "scaffold (Media Buying System Blueprint with 9 sections)", "IonWave graded example (8.5/10)", "adaptation guide (business models: high-AOV/low-AOV/subscription/B2B; spend levels: <$3K/$3-10K/$10-50K/$50K+)"],
+          "components": [
+            "5-step instructions (Choose Entry Point → Build Core Docs → Channel Economics → Creative Systems → Risk Management)",
+            "grading rubric (5 dimensions: Account Structure, Attribution Stack, Scaling Protocol, Daily Operations, Channel Economics)",
+            "scaffold (Media Buying System Blueprint with 9 sections)",
+            "IonWave graded example (8.5/10)",
+            "adaptation guide (business models: high-AOV/low-AOV/subscription/B2B; spend levels: <$3K/$3-10K/$10-50K/$50K+)"
+          ],
           "created": "2026-02-10"
         }
       ],
       "note": "MIGRATED — Bootstrap File 12 (5 sheets) + 2026 research → 14 output files. 12 dialogue rounds (Performance Media Buyer, Attribution Engineer, D2C CFO), 9 upgrades. Key: Tiered scaling rates by conversion volume (20%/30%/40-50%), post-iOS 14.5 attribution stack (Pixel+CAPI, EMQ >7.0), channel profitability P&L model (contribution margin > CAC), 4-phase diversification (<50% single platform by Month 12), creative fatigue timelines (2-4 weeks), tracking validation checkpoints (prevents $10K+ waste)."
     },
-    "m14": {"name": "Testing & Optimization", "opkits": "MIGRATED - see tup_to_opkit.m14"},
-    "m15": {"name": "Landing Pages & Conversion", "opkits": "MIGRATED - see tup_to_opkit.m15"},
-    "m16": {"name": "Content & SEO", "opkits": "MIGRATED - see tup_to_opkit.m16"},
-    "m17": {"name": "Email & SMS", "opkits": "MIGRATED - see tup_to_opkit.m17"},
+    "m14": {
+      "name": "Testing & Optimization",
+      "opkits": "MIGRATED - see tup_to_opkit.m14"
+    },
+    "m15": {
+      "name": "Landing Pages & Conversion",
+      "opkits": "MIGRATED - see tup_to_opkit.m15"
+    },
+    "m16": {
+      "name": "Content & SEO",
+      "opkits": "MIGRATED - see tup_to_opkit.m16"
+    },
+    "m17": {
+      "name": "Email & SMS",
+      "opkits": "MIGRATED - see tup_to_opkit.m17"
+    },
     "m18": {
       "name": "Email Lifecycle Flows",
       "opkits": [
@@ -726,16 +792,35 @@
           "name": "Email Lifecycle Flows OpKit",
           "type": "production",
           "file": "data/m18/opkit_email_lifecycle_flows.md",
-          "components": ["14-step instructions", "grading rubric (A-F)", "scaffold (4 files)", "IonWave graded example (8.7/10)", "adaptation guide (non-subscription, multi-SKU, high-AOV, international)", "7 universal principles"],
+          "components": [
+            "14-step instructions",
+            "grading rubric (A-F)",
+            "scaffold (4 files)",
+            "IonWave graded example (8.7/10)",
+            "adaptation guide (non-subscription, multi-SKU, high-AOV, international)",
+            "7 universal principles"
+          ],
           "created": "2026-02-09"
         }
       ],
       "note": "MIGRATED — Corrected name from 'SMS' to 'Email Lifecycle Flows'. SMS strategy remains in M17."
     },
-    "m19": {"name": "Customer Lifecycle & CRM", "opkits": "MIGRATED - see tup_to_opkit.m19"},
-    "m20": {"name": "Support", "opkits": "MIGRATED - see tup_to_opkit.m20"},
-    "m22": {"name": "Referral & Community", "opkits": "MIGRATED - see tup_to_opkit.m22"},
-    "m23": {"name": "Influencer & Creator", "opkits": "MIGRATED - see tup_to_opkit.m23"},
+    "m19": {
+      "name": "Customer Lifecycle & CRM",
+      "opkits": "MIGRATED - see tup_to_opkit.m19"
+    },
+    "m20": {
+      "name": "Support",
+      "opkits": "MIGRATED - see tup_to_opkit.m20"
+    },
+    "m22": {
+      "name": "Referral & Community",
+      "opkits": "MIGRATED - see tup_to_opkit.m22"
+    },
+    "m23": {
+      "name": "Influencer & Creator",
+      "opkits": "MIGRATED - see tup_to_opkit.m23"
+    },
     "m24": {
       "name": "Fulfillment & Inventory",
       "opkits": [
@@ -744,30 +829,35 @@
           "name": "Fulfillment & Inventory OpKit",
           "type": "production",
           "file": "data/m24/opkit_fulfillment_and_inventory.md",
-          "components": ["12-step instructions", "grading rubric (A-F)", "scaffold (4 files)", "IonWave graded example (8.4/10)", "adaptation guide (non-subscription, multi-SKU, perishable, high-volume)", "7 universal principles"],
+          "components": [
+            "12-step instructions",
+            "grading rubric (A-F)",
+            "scaffold (4 files)",
+            "IonWave graded example (8.4/10)",
+            "adaptation guide (non-subscription, multi-SKU, perishable, high-volume)",
+            "7 universal principles"
+          ],
           "created": "2026-02-09"
         }
       ],
       "note": "MIGRATED — 10 Danilo tabs (204 rows) → 4 output files. Green-field build (no Bootstrap source). 27 dialogue upgrades. Deliverr/Flexport merged. Amazon FBA clarified as channel-only."
     },
-    "m1": {
-      "name": "Labor Chain & Deployment",
-      "opkits": [
-        {
-          "id": "OK-M1-001",
-          "name": "Labor Chain & Deployment OpKit",
-          "type": "production",
-          "file": "data/m1/opkit_labor_chain_and_deployment.md",
-          "components": ["13-step instructions", "grading rubric (A-F)", "scaffold (5 files)", "IonWave graded example (8.6/10)", "adaptation guide (solo founder, franchise, service, high-growth)", "8 universal principles"],
-          "created": "2026-02-09"
-        }
-      ],
-      "note": "MIGRATED — 16 Danilo tabs → 5 output files. Green-field build. 34 dialogue upgrades (5 critical: misclassification, Trustee authority, CM independence, equity instrument, offboarding). 7-week sprint corrected to 12-week."
+    "m25": {
+      "name": "Financial Operations",
+      "opkits": "MIGRATED - see tup_to_opkit.m25"
     },
-    "m25": {"name": "Financial Operations", "opkits": "MIGRATED - see tup_to_opkit.m25"},
-    "m28": {"name": "Market Expansion", "opkits": "MIGRATED - see tup_to_opkit.m28"},
-    "m29": {"name": "PR & Communications", "opkits": "MIGRATED - see tup_to_opkit.m29"},
-    "m30": {"name": "Analytics & Dashboards", "opkits": "MIGRATED - see tup_to_opkit.m30"},
+    "m28": {
+      "name": "Market Expansion",
+      "opkits": "MIGRATED - see tup_to_opkit.m28"
+    },
+    "m29": {
+      "name": "PR & Communications",
+      "opkits": "MIGRATED - see tup_to_opkit.m29"
+    },
+    "m30": {
+      "name": "Analytics & Dashboards",
+      "opkits": "MIGRATED - see tup_to_opkit.m30"
+    },
     "m31": {
       "tup_name": "Hiring",
       "opkits": [
@@ -794,9 +884,18 @@
         }
       ]
     },
-    "m32": {"name": "School Model", "opkits": "TBD - pending migration"},
-    "m33": {"name": "Governance & CM", "opkits": "TBD - pending migration"},
-    "m34": {"name": "Trade Architecture", "opkits": "TBD - pending migration"},
+    "m32": {
+      "name": "School Model",
+      "opkits": "TBD - pending migration"
+    },
+    "m33": {
+      "name": "Governance & CM",
+      "opkits": "TBD - pending migration"
+    },
+    "m34": {
+      "name": "Trade Architecture",
+      "opkits": "TBD - pending migration"
+    },
     "m35": {
       "tup_name": "Execution Plans & Rhythms",
       "opkits": [
@@ -824,9 +923,36 @@
         }
       ]
     },
-    "m36": {"name": "Operational Infra", "opkits": "TBD - pending migration"},
-    "m37": {"name": "AI & Automation", "opkits": "TBD - pending migration"},
-    "m38": {"name": "Strategic Frameworks", "opkits": "TBD - pending migration"},
+    "m36": {
+      "tup_name": "Operational Infrastructure",
+      "opkits": [
+        {
+          "opkit_id": "OK-M36-001",
+          "name": "D2C Operational Infrastructure Framework",
+          "type": "production",
+          "source_file": "data/opkits/OK-M36-001_Operational_Infrastructure.md",
+          "description": "Complete operational infrastructure system for bootstrapped D2C brands: company-as-a-system (7 subsystems), capabilities maturity framework (11 domains, 1-4 scale), decision authority matrix (Solo Founder and CM Model variants), risk register template (R001-R006 with L×I scoring and contingency playbooks), performance monitoring system (5 operating parameters + 4-cadence review), knowledge management protocol (runbooks, never-go-cold, CM onboarding)",
+          "components": {
+            "company_as_system": "data/m36/operational_system.md — 7-subsystem model with inputs/outputs/metrics/owners, system interaction map, capabilities maturity 1-4 scoring across 11 domains",
+            "decision_rights": "data/m36/decision_rights.md — Solo Founder and CM Model authority variants, RACI matrix, delegation framework, CM activation threshold (DECISION TBD)",
+            "knowledge_management": "data/m36/knowledge_management.md — runbook index system, never-go-cold protocol (2.5hr minimum viable week), CM knowledge transfer protocol",
+            "risk_and_continuity": "data/m36/risk_and_continuity.md — R001-R006 risk register, 6 contingency playbooks, business continuity baseline, pre-launch readiness checklist",
+            "performance_monitoring": "data/m36/performance_monitoring.md — 5 operating parameters with thresholds (CAC <0, ROAS >2.0x, Safety Stock 14d, SLA <4hr, Test 00), daily/weekly/monthly/quarterly cadence, Phase 1/Phase 2 monitoring architecture"
+          },
+          "created": "2026-02-17",
+          "workshop_notes": "Best-in-class systems thinking framework from Danilo. CM authority model has two variants. Phase 2 monitoring pending API key setup (DEC-2026-02-17-003)."
+        }
+      ],
+      "note": "MIGRATED — 43 Danilo tabs → 6 output files. Company-as-a-system is the spine. Risk register complete with L×I scoring. CM authority model in two variants. Phase 1/Phase 2 monitoring architecture. 5 dialogue rounds, 7 upgrades."
+    },
+    "m37": {
+      "name": "AI & Automation",
+      "opkits": "TBD - pending migration"
+    },
+    "m38": {
+      "name": "Strategic Frameworks",
+      "opkits": "TBD - pending migration"
+    },
     "m39": {
       "tup_name": "Conceptual & Philosophical Foundations",
       "opkits": [
@@ -852,7 +978,10 @@
         }
       ]
     },
-    "m40": {"name": "Navigation & Command", "opkits": "TBD - pending migration"}
+    "m40": {
+      "name": "Navigation & Command",
+      "opkits": "TBD - pending migration"
+    }
   },
   "migration_notes": {
     "phase_1_complete": "M0, M26, M27 OpKits registered",

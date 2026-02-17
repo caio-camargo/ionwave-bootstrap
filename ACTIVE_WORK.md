@@ -25,7 +25,7 @@
 
 | Operator | Started | Scope | Files at risk |
 |----------|---------|-------|---------------|
-| Claude (M36 Workshop) | 2026-02-17 | M36 Operational Infrastructure — full TUP workshop | data/m36/, data/manifest.json, data/opkits/registry.json, tracking/TUP_Workshop_Tracker.md, SESSION_LOG.md |
+| *(no active claims)* | | | |
 
 ---
 

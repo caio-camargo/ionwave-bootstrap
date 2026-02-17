@@ -3,9 +3,9 @@
   "system": "Studio 3 Imagination Generation System",
   "organization": "tup_based",
   "total_tups": 41,
-  "migrated_tups": 28,
+  "migrated_tups": 29,
   "migration_status": "in_progress",
-  "last_updated": "2026-02-16",
+  "last_updated": "2026-02-17",
   "hypotheses_system": {
     "version": "1.0.0",
     "description": "Central registry for all business hypotheses with validation tracking",
@@ -2487,15 +2487,15 @@
       "danilo_source_note": "25 tabs (773-797, 801) covering 30/90/365-day plans, operating rhythms, meeting cadences, SOPs, phase checklists. All A-grade industry research (Amazon WBR, First Round PMF, D2C 2026 trends). IonWave adaptation C/D-grade (pre-launch). 6 dialogue rounds, 7 upgrades (CAC phasing, supplier pre-work, MBR scaling, dual LTV gate, 3PL timing, kill discipline, crisis mode). 2 unresolved gaps (burnout, market saturation). Novel contributions: choreography framework, crisis mode circuit breaker, hour-by-hour Week 1, objective phase gates."
     },
     "m36": {
-      "tup_id": "m36",
-      "tup_name": "Operational Infra",
+      "id": "M36",
+      "name": "Operational Infrastructure",
       "cluster": "BCL-6",
-      "status": "not_migrated",
-      "source_files": [
-        "19_systems_automation",
-        "28_process_workflows"
-      ],
-      "passet": "imagination"
+      "status": "migrated",
+      "quality_score": 8.1,
+      "workshop_date": "2026-02-17",
+      "output_path": "data/m36/",
+      "opkit_id": "OK-M36-001",
+      "source_tab_count": 43
     },
     "m37": {
       "tup_id": "m37",

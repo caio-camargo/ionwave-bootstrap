@@ -39,6 +39,42 @@
 
 ---
 
+## Session 2026-02-17 — M36 Operational Infrastructure Workshop (Complete)
+
+**Operator**: Caio
+**Model**: claude-sonnet-4-5-20250929
+**Protocol**: TWP-001 v2.0.0
+**TUP**: M36 — Operational Infrastructure
+**Quality**: 8.1/10
+**Status**: Complete
+
+### Summary
+
+Completed M36 Operational Infrastructure workshop (Phases 1-11) following TWP-001 v2.0.0 protocol. Workshop completed 3 content files previously started by another agent (risk_and_continuity, performance_monitoring) plus the OpKit, _meta.json, and all registrations. Key innovation: company-as-a-system with 7 subsystems as the conceptual spine of all M36 content. BCL-6 now 7/8 complete (87.5%).
+
+### Decisions Made
+- CM authority model documented as two explicit variants (Solo Founder vs CM Model) — activation threshold DECISION TBD
+- Phase 1/Phase 2 monitoring architecture: Phase 1 (manual, repo-based) active now; Phase 2 blocked on DEC-2026-02-17-003
+- Risk register: R001 (supplier) correctly elevated to CRITICAL (L×I = 3×5 = 15)
+
+### Actions Taken
+| # | Action | File(s) | Detail |
+|---|--------|---------|--------|
+| 1 | created |  | 548 lines. R001-R006 risk register, 6 contingency playbooks, business continuity baseline, pre-launch checklist |
+| 2 | created |  | 406 lines. 5 operating parameters (CAC <0, ROAS >2.0x, Safety Stock 14d, SLA <4hr, Test 00), 4-cadence review, Phase 1/2 architecture |
+| 3 | created |  | 439 lines. 8 components: company-as-a-system, operating parameters, decision authority, risk register template, monitoring, knowledge management, capabilities maturity, continuity checklist |
+| 4 | created |  | Full metadata with quality assessment, intelligence gaps, decision TBDs, feeds_into, requires |
+| 5 | updated |  | M36 registered (migrated), migrated_tups 28→29 |
+| 6 | updated |  | OK-M36-001 added to unmapped_tups.m36 |
+| 7 | updated |  | M36 DONE, count 34→35, BCL-6 6/8→7/8 |
+| 8 | updated |  | M36 claim cleared |
+
+### Next Steps
+- [ ] Expert review of risk register with Danilo (especially R001 supplier and R005 key person insurance)
+- [ ] Decision: CM authority model activation threshold (at what MRR/complexity?)
+- [ ] Decision: DEC-2026-02-17-003 — Phase 2 monitoring system architecture (GitHub Actions vs Apps Script)
+- [ ] Key person insurance: define coverage amount and provider before launch
+
 ## Session 2026-02-16 — M31 Hiring Workshop (Complete 11 Phases)
 
 **Operator**: Caio (Claude)
@@ -73,6 +109,42 @@ Completed M31 Hiring workshop (Phases 1-11) following TWP-001 v2.0.0 protocol. G
 - [ ] Maintain 3-4 PM maximum constraint
 
 ---
+
+## Session 2026-02-17 — M36 Operational Infrastructure Workshop (Complete)
+
+**Operator**: Caio
+**Model**: claude-sonnet-4-5-20250929
+**Protocol**: TWP-001 v2.0.0
+**TUP**: M36 — Operational Infrastructure
+**Quality**: 8.1/10
+**Status**: Complete
+
+### Summary
+
+Completed M36 Operational Infrastructure workshop (Phases 1-11) following TWP-001 v2.0.0 protocol. Workshop completed 3 content files previously started by another agent (risk_and_continuity, performance_monitoring) plus the OpKit, _meta.json, and all registrations. Key innovation: company-as-a-system with 7 subsystems as the conceptual spine of all M36 content. BCL-6 now 7/8 complete (87.5%).
+
+### Decisions Made
+- CM authority model documented as two explicit variants (Solo Founder vs CM Model) — activation threshold DECISION TBD
+- Phase 1/Phase 2 monitoring architecture: Phase 1 (manual, repo-based) active now; Phase 2 blocked on DEC-2026-02-17-003
+- Risk register: R001 (supplier) correctly elevated to CRITICAL (L×I = 3×5 = 15)
+
+### Actions Taken
+| # | Action | File(s) | Detail |
+|---|--------|---------|--------|
+| 1 | created |  | 548 lines. R001-R006 risk register, 6 contingency playbooks, business continuity baseline, pre-launch checklist |
+| 2 | created |  | 406 lines. 5 operating parameters (CAC <0, ROAS >2.0x, Safety Stock 14d, SLA <4hr, Test 00), 4-cadence review, Phase 1/2 architecture |
+| 3 | created |  | 439 lines. 8 components: company-as-a-system, operating parameters, decision authority, risk register template, monitoring, knowledge management, capabilities maturity, continuity checklist |
+| 4 | created |  | Full metadata with quality assessment, intelligence gaps, decision TBDs, feeds_into, requires |
+| 5 | updated |  | M36 registered (migrated), migrated_tups 28→29 |
+| 6 | updated |  | OK-M36-001 added to unmapped_tups.m36 |
+| 7 | updated |  | M36 DONE, count 34→35, BCL-6 6/8→7/8 |
+| 8 | updated |  | M36 claim cleared |
+
+### Next Steps
+- [ ] Expert review of risk register with Danilo (especially R001 supplier and R005 key person insurance)
+- [ ] Decision: CM authority model activation threshold (at what MRR/complexity?)
+- [ ] Decision: DEC-2026-02-17-003 — Phase 2 monitoring system architecture (GitHub Actions vs Apps Script)
+- [ ] Key person insurance: define coverage amount and provider before launch
 
 ## Session 2026-02-16 — M35 Execution Plans Registration (Phases 9-11)
 

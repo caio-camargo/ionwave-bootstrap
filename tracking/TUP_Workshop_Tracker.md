@@ -11,7 +11,7 @@
 ## Overview
 
 **Total TUPs**: 41
-**Workshopped**: 34 (M0, M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, M11, M13, M14, M15, M16, M17, M18, M19, M20, M21, M22, M23, M24, M25, M26, M27, M28, M29, M30, M31, M35, M39)
+**Workshopped**: 35 (M0, M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, M11, M13, M14, M15, M16, M17, M18, M19, M20, M21, M22, M23, M24, M25, M26, M27, M28, M29, M30, M31, M35, M36, M39)
 **Remaining**: 7
 **Deferred**: 2 (BCL-7: M32, M33) + 1 (M37: AI & Automation)
 **Active Queue**: 30
@@ -143,7 +143,7 @@ This is NOT mechanical migration. Each TUP requires creative/analytical work:
 
 ---
 
-### BCL-6: Operations & Infra (DANILO CANON) — 6/8 done (75%)
+### BCL-6: Operations & Infra (DANILO CANON) — 7/8 done (87.5%)
 
 | TUP | Name | Danilo Tabs | Effort | Status | OpKit Status | Bootstrap Sources | Notes |
 |-----|------|-------------|--------|--------|-------------|-------------------|-------|
@@ -153,7 +153,7 @@ This is NOT mechanical migration. Each TUP requires creative/analytical work:
 | M30 | Analytics & Dashboards | 9 | M | **DONE** (8.2/10) | **OK-M30-001** | 18, 34 | 9→4 files. MVD (7 metrics), existential vs monitoring kill criteria, MER>ROAS, attribution model, phase-gated analytics, graceful degradation. 6 rounds, 13 upgrades. |
 | **M31** | **Hiring** | 31 | XL | **DONE** (8.0/10) | **OK-M31-001** | 16 (archived) | 31→5 files (hiring strategy, processes, job specs, compensation, industry perspectives). Green-field build (File 16 not used). 6 rounds, 6 upgrades: PM Competence Framework (18-question scorecard >60 before ad spend prevents $5-10K waste), operator equity 10-25% with dilution waterfall, 3-4 PM maximum constraint (anti-scaling), pipeline-building 4-6 weeks early (achievable 2-4 week hire timeline), hybrid creative sprint model (remote 90% + co-locate 3-5 days every 6-8 weeks = $2-6K/year quality investment), community engagement sourcing playbook (Trends.vc/Discord lurk→contribute→DM). Job specs for 11 roles (operator, Creative/Ops/Growth PMs, Head of Ops, CM, CEO/CFO/VP) phase-gated by MRR ($0/$15-25K/$30-50K/$75-150K+ triggers). CEO/CFO/VP marked Phase 3+ post-PMF. Novel: PM competence prevents waste, operator equity model balances cash conservation + ownership, 3-4 PM constraint simplifies before scaling. |
 | **M35** | **Execution Plans & Rhythms** | 25 | L | **DONE** (8.2/10) | **OK-M35-001** | 04, 28, 31 (archived) | 25→5 files (30/90/365 plans, operating rhythms, meeting templates, phase checklists/SOPs, detailed timelines). Green-field build (no Bootstrap sources). Industry research A-grade (Amazon WBR, First Round PMF, D2C 2026). IonWave C/D-grade (pre-launch). 6 rounds, 8 upgrades: CAC phasing, supplier pre-work (Week -2 CoA), MBR scaling (60 min solo/90 min team), dual LTV gate (LTV:CAC >3.0 + Month 3 retention >60%), 3PL timing (quotes Month 3, trigger 150/month OR >10 hrs/week), kill discipline (WBR forcing function), crisis mode (circuit breaker), hour-by-hour Week 1. 2 unresolved gaps (burnout, market saturation). Novel: choreography framework (feed-forward loops), phase-gated strictness (objective gates), crisis mode protocol, pre-launch supplier work. OpKit: 12-step universal framework with scaffolds. |
-| M36 | Operational Infra | 43 | XL | NOT STARTED | TBD | 19, 28 | **Biggest non-governance TUP**: knowledge mgmt, risk, RACI, quality |
+| **M36** | **Operational Infra** | 43 | XL | **DONE** (8.1/10) | **OK-M36-001** | 19, 28 | 43 tabs → 6 files. Company-as-a-system (7 subsystems), capabilities maturity 1-4 (11 domains), CM authority model (Solo Founder vs CM Model variants), risk register R001-R006 with L×I scoring + contingency playbooks, Phase 1/Phase 2 monitoring architecture. CM activation threshold DECISION TBD. |
 | M37 | AI & Automation | 5 | S | DEFERRED | TBD | 19 | **Deferred**: content is self-referential (our AI ops process). Better to write after 10+ sessions of actual practice rather than speculate now. Revisit after Wave 5+. |
 
 **Cluster estimate**: 2XL + 2L + 2M + 1S = ~14 hrs remaining (M9, M24, M30 done)
