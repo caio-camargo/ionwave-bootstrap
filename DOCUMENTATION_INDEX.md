@@ -206,6 +206,9 @@ archive/        → Deprecated/historical files (including migrated XLSX)
 | **processes/JSON_Migration_Guide.md** | ✅ | Step-by-step process for migrating XLSX files to JSON | Migrating remaining 34 Trade files |
 | processes/Knowledge_Logistics_Audit.md | ✅ | How knowledge flows through organization | Knowledge management |
 | **processes/Porter_Five_Forces_Protocol.md** | ✅ | Step-by-step protocol for producing a Porter's Five Forces analysis | Applying Porter's Five Forces framework |
+| **processes/TUP_Workshop_Protocol.md** | ✅ | TWP-001 v2.0.0 - 11-phase protocol for workshopping TUPs from void spaces to production content + OpKits | Workshopping any TUP |
+| **processes/TUP_Report_Generation_Workflow.md** | ✅ | Workflow for generating human-readable TUP reports (JSON→bullets, aggregation) | Creating TUP reports for review |
+| **processes/TUP_Enhanced_Visualization_Protocol.md** | ✅ | TEVP-001 v1.0.0 - Format for creating rich, context-heavy TUP visualizations with reasoning, evidence, risks | Creating enhanced TUP docs for operator execution |
 | processes/Workbook_Generation_Summary.md | 📦 | Summary of workbook generation from extraction | Historical reference |
 
 ---
@@ -220,6 +223,20 @@ archive/        → Deprecated/historical files (including migrated XLSX)
 | protocols/case_studies/CSP-001_HYP-006_2026-02-06.md | ✅ | First CSP case study: HYP-006 Organic & Referral Lift decomposed into 5 sub-hypotheses | Reference for running CSP on other hypotheses |
 
 **Note**: Protocols directory contains formal Meta-Control protocols per `standards/Systems_Architecture_Standards.md`. Case studies document each protocol execution for institutional memory.
+
+---
+
+## CATEGORY 6C: PROJECT SPECIFICATIONS — `project_specs/`
+
+**High-level system design specifications that span multiple TUPs and define major architecture.**
+
+| File | Status | Purpose | When to Use |
+|------|--------|---------|-------------|
+| **project_specs/CLAUDE_AS_OS_SYSTEM.md** | ✅ v1.0.0 | Complete specification for Claude Code as primary operational interface for Trade execution (spans M35, M36, M37, M40) | Planning operational infrastructure, understanding Claude-as-OS vision, before workshopping M35/M36/M37/M40 |
+| **project_specs/PASSET_FOLDER_STRUCTURE.md** | ✅ v2.0.0 | Implementation Passet folder structure specification (time × roles organization, ICL-0 through ICL-6) | Understanding passet architecture, building Implementation Passet, extracting tasks from Imagination Passet |
+| **project_specs/INTEGRATION_DESIGN_PRINCIPLES.md** | ✅ v1.0.0 | Six design principles for integrated document architecture (embed action, self-awareness, adjacent reflection, accumulation, structured departures, isomorphic structure) | Designing new documents/systems, auditing existing systems for integration quality, understanding high-phi information architecture |
+
+**Note**: Project specs define cross-TUP systems and architecture decisions. They guide workshop execution and ensure coherent system design.
 
 ---
 
@@ -345,6 +362,9 @@ See `data/manifest.json` for complete inventory with migration status, or `Maste
 | **Applying expert frameworks (Porter's, Investor Lens, etc.)** | ci-protocol/07_FRAMEWORKS.md |
 | **Running Porter's Five Forces analysis** | processes/Porter_Five_Forces_Protocol.md |
 | **Running competitive intelligence (full workflow)** | ci-protocol/00_INDEX.md |
+| **Workshopping a TUP from scratch** | processes/TUP_Workshop_Protocol.md |
+| **Generating TUP reports for review** | processes/TUP_Report_Generation_Workflow.md |
+| **Creating enhanced TUP documentation with reasoning** | processes/TUP_Enhanced_Visualization_Protocol.md |
 
 ---
 

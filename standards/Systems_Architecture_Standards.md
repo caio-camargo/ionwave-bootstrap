@@ -15,6 +15,8 @@
 
 This document defines the formal ontological primitives that structure Studio 3's system architecture. These primitives provide a consistent vocabulary for discussing system design, control mechanisms, and operational interfaces.
 
+**12 Ontological Primitives**: Architecture, Interface Definitions, Protocols, Parameters, Controllers, Observers, Passets, Void Space, Content, OpKit, Metric, Meta-Control
+
 **Core Principle**: The system operates through formal **protocols** (how work happens), constrained by **parameters** (numeric bounds), monitored by **controllers** (deviation detection), and improved by **meta-control** (system learning).
 
 ---
@@ -168,7 +170,66 @@ Operate on system artifacts rather than business performance.
 - Report upward to Meta-Control
 - Trigger Reactive Protocols
 
-### 6. Passets
+### 6. Observers
+
+**Definition**: Composite state estimators that aggregate multiple metrics (signals) into a single legible assessment or score.
+
+**Function**:
+1. **Aggregate** - Combine multiple input signals (metrics)
+2. **Weight** - Apply importance weighting to each signal
+3. **Calculate** - Produce composite score or state estimate
+4. **Classify** - Map score to categorical assessment (e.g., "Strong", "Healthy", "At Risk")
+5. **Diagnose** - Provide fault-tree patterns to explain the assessment
+
+**Difference from Controllers**:
+- **Controller**: Monitors single metric → compares to threshold → triggers protocol
+- **Observer**: Monitors multiple metrics → produces composite state → informs strategic decisions
+
+**Observer Types**:
+
+#### Continuous Observers
+Calculate composite score on regular cadence (daily/weekly/monthly).
+
+**Examples**: Trade Health Observer, PMF Observer, Portfolio Health Observer
+
+#### Diagnostic Observers
+Analyze patterns across metrics to identify root causes.
+
+**Examples**: Churn Risk Observer (combines retention, engagement, support tickets, NPS)
+
+**Characteristics**:
+- Observers do not trigger Reactive Protocols directly (they inform Controllers or dashboards)
+- Primarily executed by CM (portfolio oversight) or MSO (system health)
+- Attach to Trade Instances or Portfolio-Level Oversight
+- Report to Meta-Control for weighting adjustments
+- May feed into Controllers (e.g., Trade Health Observer output becomes input to C-013)
+
+**Observer Schema**:
+Every Observer has:
+- **ID** - Unique identifier (e.g., OBS-001, OBS-002)
+- **Name** - Descriptive name (e.g., "Trade Health Observer")
+- **Type** - Continuous / Diagnostic
+- **Input Signals** - List of metrics with weights
+- **Calculation Method** - Formula or algorithm
+- **Output** - Score range and categorical mappings
+- **Diagnostic Patterns** - Fault trees for interpretation
+- **Frequency** - How often calculated
+- **Owner Role** - Who monitors the output
+- **Use Case** - When to reference this observer
+
+**First Instance**: Computational PMF Observer (M0 OpKit)
+- **10 input signals**: Sean Ellis score (25%), Retention M2 (20%), Organic % (15%), NPS (15%), CAC trend (10%), Referral % (5%), Explanation cost, Price sensitivity, Inbound growth, Time to value
+- **Score bands**: 0-30 (No PMF), 30-50 (Early PMF), 50-70 (Achieved PMF), 70+ (Strong PMF)
+- **5 diagnostic patterns**: Missing core value, weak retention, poor word-of-mouth, unsustainable CAC, unclear positioning
+- **Purpose**: Early thesis-level assessment of product-market fit
+
+**Second Instance**: Trade Health Observer (for Live Trades)
+- **7 input signals**: Margin Stability, Unit Economics, Lift Velocity, Revenue Recurrence, Operator Drift, Cash Constraints, Risk Exposure
+- **Formula**: H = 5M + 4U + 3L + 2R - X(f+c+r) where each component is normalized 0-10 scale
+- **Score bands**: <20 (Critical), 20-40 (At Risk), 40-60 (Healthy), 60+ (Strong)
+- **Purpose**: Portfolio-level monitoring of Trade operational health
+
+### 7. Passets
 
 **Definition**: Structured information containers (Drive folders) that define inputs and outputs for each Machine. The Trade exists and is visible to the Studio in the form of Passets.
 
@@ -200,7 +261,7 @@ Convert validated performance into investor-ready materials. Staged → filled �
 - Void spaces are filled with Content Instances
 - Some freeze (historical record), others stay live (operational)
 
-### 7. Void Space
+### 8. Void Space
 
 **Definition**: A box where something goes - a blank to be filled with content. Standardizes structures and relationships according to content type.
 
@@ -209,7 +270,7 @@ Convert validated performance into investor-ready materials. Staged → filled �
 - Content fills Void Spaces
 - Ensures consistent structure across all Trades
 
-### 8. Content
+### 9. Content
 
 **Definition**: What goes in a void space.
 
@@ -220,7 +281,7 @@ Convert validated performance into investor-ready materials. Staged → filled �
 
 **Content Instance**: A specific version of a content type created for a particular passet (e.g., "Strategic-Foundation-Analysis-Jan2025.pdf")
 
-### 9. OpKit
+### 10. OpKit
 
 **Definition**: Production support bundle containing everything needed to produce high-quality deliverables. Scaffolds execution for specific Passet deliverables.
 
@@ -246,7 +307,7 @@ For singular evolving foundational documents.
 - Stored in Content Library (read-only for Operators/CMs)
 - Only modifiable through Meta-Control
 
-### 10. Metric
+### 11. Metric
 
 **Definition**: A measured value tracked over time. The raw input to Controllers.
 
@@ -261,7 +322,7 @@ Metric (measured) → Controller (compares to) → Parameter (threshold)
   → If deviation → Reactive Protocol
 ```
 
-### 11. Meta-Control
+### 12. Meta-Control
 
 **Definition**: The Studio's architectural mechanism for supervising the system itself. Operates on the rules that operate on Trades, not on Trades directly.
 
@@ -327,8 +388,9 @@ Meta-Control → modifies → Protocols, Parameters, Interface Definitions
 - **Interface Definitions**: Document metadata standards, deliverable structure standards
 - **Protocols**: Implicit in process documents (e.g., Competitive Intelligence Protocol)
 - **Parameters**: Quality scores, confidence grades (A/B/C/D)
-- **Controllers**: Not yet formalized (though hypothesis tracking serves similar function)
-- **OpKits**: Referenced but not yet built out systematically
+- **Controllers**: Formalized in `/passets/dashboards/controller_registry.md` (12 controllers for operational monitoring)
+- **Observers**: Computational PMF Observer (M0 OpKit), Trade Health Observer (to be implemented)
+- **OpKits**: Registry established in `/data/opkits/registry.json` (9 OpKits mapped to TUPs)
 - **Meta-Control**: Partially implemented through versioning, session logs, decision tracking
 
 **Next Evolution**:
@@ -343,3 +405,11 @@ As the Bootstrap system matures toward full Studio 3 operation, these primitives
 - Formalized 11 ontological primitives
 - Added system relationships diagram
 - Added application notes for IonWave Bootstrap context
+
+**v1.1.0 (2026-02-12)**:
+- Added Observer primitive (12th primitive, from REC-002c decision)
+- Observer definition: composite state estimators that aggregate multiple metrics
+- Differentiated Observers from Controllers (composite vs single-metric monitoring)
+- Examples: Computational PMF Observer (M0), Trade Health Observer (OBS-001)
+- Updated numbering for subsequent primitives (Passets now #7, Meta-Control now #12)
+- Updated application notes: Controllers formalized, Observers with Trade Health implementation

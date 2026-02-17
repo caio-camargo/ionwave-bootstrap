@@ -315,8 +315,10 @@ The system's formal entities (full definitions in `standards/Systems_Architectur
 - **Migrating a file to JSON?** → processes/JSON_Migration_Guide.md
 - **Stress-testing hypotheses?** → `protocols/CSP-001_Constraint_Scenario_Protocol.md` (10-step constraint scenario process)
 - **Seeing a CSP case study?** → `protocols/case_studies/CSP-001_HYP-006_2026-02-06.md` (first worked example)
-- **Running competitive intelligence?** → ci-protocol/00_INDEX.md (full CI workflow)
-- **Applying expert frameworks?** → ci-protocol/07_FRAMEWORKS.md (worked examples)
+- **Workshopping a TUP?** → `processes/TUP_Workshop_Protocol.md` (11-phase process: research, persona dialogue, OpKit creation)
+- **TUP workshop progress?** → `tracking/TUP_Workshop_Tracker.md` (38 TUPs queued, effort estimates, wave order)
+- **Running competitive intelligence?** → ci-protocol/00_INDEX.md (worked example of TWP applied to CI)
+- **Applying expert frameworks?** → ci-protocol/07_FRAMEWORKS.md (worked examples for CI personas)
 
 ---
 
@@ -414,10 +416,14 @@ Now applying established frameworks to:
 **This project uses `SESSION_LOG.md` to maintain continuity across sessions.**
 
 ### At the start of every session:
-1. Read the **last 3 session entries** in `SESSION_LOG.md` (they're reverse chronological — newest first)
-2. Pay special attention to the **Next Steps** section of the most recent entry
-3. Create a new entry at the top of the log using the template in that file
-4. Only read older entries if you need context on a specific decision or file change
+1. **Check `ACTIVE_WORK.md`** — see if anyone else is working on files you plan to touch. If there's a conflict, ask the operator before proceeding.
+2. **Claim your scope** in `ACTIVE_WORK.md` (operator name, date, what you're working on, files at risk)
+3. Read the **last 3 session entries** in `SESSION_LOG.md` (they're reverse chronological — newest first)
+4. Pay special attention to the **Next Steps** section of the most recent entry
+5. Create a new entry at the top of the log using the template in that file
+6. Only read older entries if you need context on a specific decision or file change
+
+**Session naming**: Use `## Session YYYY-MM-DD — Brief Title` (no sequence numbers — they collide with multiple operators).
 
 ### During the session:
 - Record all file changes (creates, edits, moves, archives) in the Actions table
@@ -434,25 +440,27 @@ Run through this checklist before ending a session:
    - Log all decisions and their rationale
    - Write clear "Next Steps" for the next session
 
-2. **Check startup docs for staleness**
+2. **Clear `ACTIVE_WORK.md`** — remove your claim from the table. If you left anything mid-flight, note it in the "Unresolved" section.
+
+3. **Check startup docs for staleness**
    - Does `00_START_HERE.md` still reflect reality? (file structure, branch names, dashboard views, current phase)
    - Does `DOCUMENTATION_INDEX.md` list any new files created this session?
    - Does `data/manifest.json` reflect any new data files or status changes?
 
-3. **Commit and push**
+4. **Commit and push**
    - Stage all relevant changes (data, dashboard, docs, tracking)
    - Commit with descriptive message
    - Push to `origin/main` to deploy dashboard updates
    - Verify no untracked files that should be committed
 
-4. **Reconciliation check** (if applicable)
+5. **Reconciliation check** (if applicable)
    - Are any new reconciliation decisions made? Update `tracking/Reconciliation_Decision_Log.md`
    - Does `IonWave/Reconciliation_Audit.md` need a version bump?
    - Does `data/crosswalk.json` need updates?
 
-5. **Pending items** — explicitly note anything left unfinished in SESSION_LOG next steps
+6. **Pending items** — explicitly note anything left unfinished in SESSION_LOG next steps
 
-**Why:** Claude Code sessions don't share context. The session log and up-to-date docs are the only way to maintain continuity. If you skip this, the next session starts blind.
+**Why:** Claude Code sessions don't share context. The session log, startup docs, and `ACTIVE_WORK.md` are the only way to maintain continuity and avoid conflicts. If you skip this, the next session starts blind — or worse, collides with someone else's work.
 
 ---
 

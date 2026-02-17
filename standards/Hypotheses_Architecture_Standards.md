@@ -1,5 +1,5 @@
 # Hypotheses Architecture Standards
-**Version**: v1.1.0
+**Version**: v1.2.0
 **Author**: Caio, Claude (collaborative)
 **Date Created**: 2026-02-05
 **Last Updated**: 2026-02-06
@@ -56,7 +56,23 @@ The Hypotheses Architecture treats business assumptions as **ontological primiti
       },
       "feeds_into": ["HYP-XXX", "HYP-YYY"],
       "depends_on": ["HYP-ZZZ"],
-      "risk_if_wrong": "Impact description if hypothesis is invalidated"
+      "risk_if_wrong": "Impact description if hypothesis is invalidated",
+      "open_issues": [
+        {
+          "issue_id": "ISS-XXX",
+          "date_flagged": "YYYY-MM-DD",
+          "flagged_by": "Source/context",
+          "severity": "HIGH|MEDIUM|LOW",
+          "type": "target_mismatch|evidence_conflict|dependency_invalidated|structural_gap|data_needed",
+          "summary": "Short problem description",
+          "detail": "Full explanation",
+          "recommended_action": "What to do",
+          "validation_log_ref": "LOG-XXX",
+          "resolution": null,
+          "resolved_date": null,
+          "resolved_by": null
+        }
+      ]
     }
   ],
   "metadata": {
@@ -120,7 +136,7 @@ The Hypotheses Architecture treats business assumptions as **ontological primiti
     {
       "entry_id": "LOG-XXX",
       "timestamp": "YYYY-MM-DDTHH:MM:SSZ",
-      "event_type": "HYPOTHESIS_CREATED|HYPOTHESIS_REVISED|STATE_CHANGED|VALIDATION_STARTED|VALIDATION_COMPLETED|ARCHITECTURE_ESTABLISHED",
+      "event_type": "HYPOTHESIS_CREATED|HYPOTHESIS_REVISED|STATE_CHANGED|VALIDATION_STARTED|VALIDATION_COMPLETED|ARCHITECTURE_ESTABLISHED|CONSTRAINT_SCENARIO_APPLIED|TUP_EVIDENCE_CONTRIBUTION|ISSUE_FLAGGED|ISSUE_RESOLVED",
       "hypothesis_id": "HYP-XXX",
       "actor": "Name or session ID",
       "description": "What happened",
@@ -187,6 +203,128 @@ ASSUMED → TESTING → VALIDATED
 - Hypothesis archived for historical reference
 - Cannot transition to other states (permanent)
 - Keep in registry with RETIRED status for audit trail
+
+---
+
+## Open Issues System
+
+Hypotheses can accumulate **open issues** — problems identified but not yet resolved. This fills the gap between "everything is fine" and "we've formally revised the hypothesis." Open issues are the hypothesis equivalent of a bug report: someone found a problem, it's documented, but it hasn't been fixed yet.
+
+### Why Open Issues Exist
+
+Without this mechanism, flagged problems get buried in:
+- Validation log entries (chronological stream — easy to miss)
+- TUP dialogue summaries (contextual to one workshop)
+- Session logs (ephemeral)
+
+The hypothesis itself — the place you'd actually look — shows no sign of trouble. `open_issues[]` makes problems visible **on the hypothesis**, so any session reading the registry immediately sees what's unresolved.
+
+### Schema
+
+Add `open_issues` as an optional array on any hypothesis:
+
+```json
+{
+  "id": "HYP-004",
+  "open_issues": [
+    {
+      "issue_id": "ISS-001",
+      "date_flagged": "2026-02-06",
+      "flagged_by": "M10 workshop dialogue Round 4",
+      "severity": "HIGH|MEDIUM|LOW",
+      "type": "target_mismatch|evidence_conflict|dependency_invalidated|structural_gap|data_needed",
+      "summary": "Short description of the problem",
+      "detail": "Full explanation with evidence references",
+      "recommended_action": "What should be done to resolve this",
+      "validation_log_ref": "LOG-018",
+      "resolution": null,
+      "resolved_date": null,
+      "resolved_by": null
+    }
+  ]
+}
+```
+
+### Issue Types
+
+| Type | When to Use | Example |
+|------|------------|---------|
+| `target_mismatch` | Evidence shows the hypothesis target is unreachable | HYP-004: 67% margin unachievable with subscription discount |
+| `evidence_conflict` | New evidence contradicts existing evidence | Two sources disagree on a key data point |
+| `dependency_invalidated` | An upstream hypothesis changed, affecting this one | HYP-003 revised → HYP-005 LTV calculation stale |
+| `structural_gap` | Missing data or analysis that should exist | No segment-specific pricing data |
+| `data_needed` | Specific data collection required before resolution | PT-001 must complete before price can be confirmed |
+
+### Severity Levels
+
+| Severity | Definition | Action Required |
+|----------|-----------|----------------|
+| **HIGH** | Hypothesis target or value is likely wrong. Decisions based on it may be incorrect. | Resolve before next major decision using this hypothesis. |
+| **MEDIUM** | Hypothesis is weakened but not broken. Value may need adjustment. | Resolve within next 2-3 sessions or when relevant TUP is workshopped. |
+| **LOW** | Minor concern or refinement needed. Current value is usable. | Resolve opportunistically. |
+
+### Issue Lifecycle
+
+```
+FLAGGED → ACKNOWLEDGED → RESOLVED
+                       ↘ WONT_FIX (documented why)
+```
+
+1. **FLAGGED**: Problem identified during workshop, dialogue, or analysis. Issue created with `resolution: null`.
+2. **ACKNOWLEDGED**: Operator confirms the issue is real (optional — implicit if no one disputes it).
+3. **RESOLVED**: Issue fixed. Resolution documented. `resolution` field populated. Hypothesis revised if needed.
+4. **WONT_FIX**: Issue is real but won't be addressed (e.g., accepted risk). Documented in `resolution`.
+
+### Resolving an Issue
+
+When resolving:
+
+1. **Update the `open_issues` entry**:
+```json
+{
+  "issue_id": "ISS-001",
+  "resolution": "HYP-004 target revised from 67% to 63% (revision #2). Kill threshold 60% unchanged.",
+  "resolved_date": "2026-02-10",
+  "resolved_by": "Caio + Claude (session 2026-02-10)"
+}
+```
+
+2. **Add a revision to the hypothesis** (if the value changed)
+3. **Log an `ISSUE_RESOLVED` event** in validation_log.json
+4. **Move the issue** from `open_issues` to `resolved_issues` (or leave in `open_issues` with resolution populated — either convention works)
+
+### System-Wide Health Check
+
+To find all unresolved issues across the hypothesis system, scan:
+```
+For each hypothesis in registry.json:
+  If open_issues exists AND any issue has resolution: null:
+    → Flag as having unresolved issues
+```
+
+This enables a dashboard view: "Hypotheses with open issues" — critical for operator awareness.
+
+### Issuing an Open Issue
+
+When flagging a new issue:
+
+**Step 1**: Assign an issue ID. Format: `ISS-{NNN}` (sequential across the entire system, not per hypothesis).
+
+**Step 2**: Add to the hypothesis's `open_issues[]` in `registry.json`.
+
+**Step 3**: Log an `ISSUE_FLAGGED` event in `validation_log.json`:
+```json
+{
+  "entry_id": "LOG-XXX",
+  "event_type": "ISSUE_FLAGGED",
+  "hypothesis_id": "HYP-004",
+  "description": "Open issue ISS-001 flagged: [summary]",
+  "issue_id": "ISS-001",
+  "notes": "Flagged during [context]. Recommended action: [action]."
+}
+```
+
+**Step 4**: Update `metadata.event_types.ISSUE_FLAGGED` count in validation_log.json.
 
 ---
 
@@ -955,6 +1093,8 @@ Before committing hypothesis changes, verify:
 - [ ] Validation log entry created with proper event_type
 - [ ] Metadata counts updated in all three files
 - [ ] Related analysis documents include hypotheses_referenced metadata
+- [ ] Any flagged issues added to `open_issues[]` on the affected hypothesis
+- [ ] `ISSUE_FLAGGED` event logged in validation_log.json for each new issue
 
 ---
 
@@ -1061,6 +1201,16 @@ Example:
 ---
 
 ## Version History
+
+**v1.2.0 (2026-02-06)**:
+- Added Open Issues System: `open_issues[]` array on hypotheses for tracking flagged-but-unresolved problems
+- Added `ISSUE_FLAGGED` and `ISSUE_RESOLVED` event types for validation log
+- Added issue types (target_mismatch, evidence_conflict, dependency_invalidated, structural_gap, data_needed)
+- Added issue severity levels (HIGH, MEDIUM, LOW)
+- Added issue lifecycle (FLAGGED → ACKNOWLEDGED → RESOLVED or WONT_FIX)
+- Added system-wide health check guidance (scan for unresolved issues)
+- Updated Quality Control Checklist with open_issues verification steps
+- Updated registry schema and validation log event_type enum
 
 **v1.1.0 (2026-02-06)**:
 - Added Sub-Hypothesis System section with schema, composite scoring, decomposition rules
