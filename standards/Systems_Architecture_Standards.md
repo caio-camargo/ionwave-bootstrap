@@ -1,9 +1,9 @@
 # Systems Architecture Standards
 
-**Version**: 1.0.0
+**Version**: 1.2.0
 **Author**: Caio, Claude (extracted from Sprint_STAGE_5)
 **Date Created**: 2026-02-06
-**Last Updated**: 2026-02-06
+**Last Updated**: 2026-02-17
 **AI Model**: claude-sonnet-4-5-20250929
 **Purpose**: Formal definitions of Studio 3's ontological primitives and system architecture elements
 **Status**: Active
@@ -15,9 +15,9 @@
 
 This document defines the formal ontological primitives that structure Studio 3's system architecture. These primitives provide a consistent vocabulary for discussing system design, control mechanisms, and operational interfaces.
 
-**12 Ontological Primitives**: Architecture, Interface Definitions, Protocols, Parameters, Controllers, Observers, Passets, Void Space, Content, OpKit, Metric, Meta-Control
+**13 Ontological Primitives**: Architecture, Interface Definitions, Protocols, Parameters, Controllers, Observers, Passets, Void Space, Content, OpKit, Metric, Meta-Control, Bilateral Contract
 
-**Core Principle**: The system operates through formal **protocols** (how work happens), constrained by **parameters** (numeric bounds), monitored by **controllers** (deviation detection), and improved by **meta-control** (system learning).
+**Core Principle**: The system operates through formal **protocols** (how work happens), constrained by **parameters** (numeric bounds), monitored by **controllers** (deviation detection), improved by **meta-control** (system learning), and coordinated across stakeholder boundaries by **bilateral contracts** (explicit mutual commitments).
 
 ---
 
@@ -350,6 +350,81 @@ Modifies Passet schemas, void spaces, templates when patterns indicate interface
 - Produces updated protocols, tuned parameters, revised controllers, modified interfaces
 - Changes propagate forward into next cohort
 
+### 13. Bilateral Contract
+
+**Definition**: A structured, bilateral commitment between two parties at a system boundary. Makes explicit what each side delivers, receives, what quality standard applies, what timeline governs, and what happens when either side doesn't deliver.
+
+**Key Insight**: Every relationship in a business IS a contract, whether legible or illegible. A bilateral contract makes the implicit explicit. It is not a legal document — it is a structural design artifact that sits at a boundary and makes that boundary navigable by both parties.
+
+**Source**: Danilo's essay on contract engineering (February 2026). See `project_specs/CONTRACT_ENGINEERING.md` for full reference.
+
+**Contract vs. Protocol**: A Protocol defines how work happens (behavior). A Bilateral Contract defines what two parties owe each other at a boundary (mutual commitment). Protocols may execute within a contract's scope, but the contract is the agreement that frames the relationship, not the steps within it.
+
+**Contract vs. Interface Definition**: An Interface Definition specifies the structure of information at a boundary. A Bilateral Contract specifies the obligations, deliverables, and consequences at that boundary. Interfaces define form; contracts define commitment.
+
+**Structure — Every Bilateral Contract has**:
+- **Parties** - The two entities at the boundary (e.g., Company ↔ Customer, Founder ↔ Investor)
+- **Party A Commitments** - What Party A delivers, at what quality, on what timeline
+- **Party B Commitments** - What Party B delivers, at what quality, on what timeline
+- **Quality Standard** - How "delivered" is defined (measurable, not subjective)
+- **Temporal Boundary** - Timeline, cadence, renewal/retirement schedule
+- **Consequence Structure** - What happens when either party doesn't deliver
+- **Coherence Links** - Which other Bilateral Contracts in the stack depend on this one
+
+**Bilateral Contract Types**:
+
+#### Customer Contract
+At point of purchase. Company commits to product spec, shipping SLA, quality standard, refund/replacement policy. Customer commits to payment, accurate information, return conditions, intended use.
+
+**Example**: "We ship within 2 business days. If product doesn't match description, full refund within 48 hours. You provide accurate shipping address and follow return conditions within 30 days."
+
+#### Employee Contract
+At point of hire. Company commits to role scope, compensation, success criteria (specific deliverables, not vague expectations), review cadence, consequence structure. Employee commits to output quality, availability, professional conduct, knowledge transfer.
+
+#### Investor Contract
+At point of investment. Founder commits to specific milestones (not "general corporate purposes"), reporting cadence, decision-making structure. Investor commits to capital, participation (board attendance, intro volume, response time), non-interference scope, follow-on framework.
+
+#### Oracle/Advisor Contract
+At point of engagement. Project commits to briefing materials, bounded queries, evaluation process. Advisor commits to introductions, vision input, credibility signaling within defined scope and authority.
+
+#### Deployer Contract
+At point of project engagement. Client commits to inputs, access, timely feedback, payment. Deployer commits to defined content types with per-type SLAs, grading standards, and penalties.
+
+**The Contract Stack**:
+
+Every business is a stack of Bilateral Contracts. The stack represents the complete contractual architecture of the organization. Contracts chain — each contract's outputs become another contract's inputs:
+
+```
+Customer Contract (what we promise customers)
+    ↓ obligations become...
+Employee Contract (employee deliverables must support customer promises)
+    ↓ obligations become...
+Deployer Contract (external talent must meet standards supporting employee deliverables)
+    ↓ obligations become...
+Investor Contract (milestones = aggregations of deployer + employee completions)
+```
+
+**Stack Coherence**: The stack must cohere. A promise to one stakeholder that depends on a commitment from another stakeholder requires the contracts to be linked. If they contradict, the stack is broken.
+
+**Example of broken stack**: Customer Contract promises same-day replacement, but Employee Contract doesn't include inventory management as a deliverable. Structural gap — not a communication problem, not a motivation problem. A missing link in the contract chain.
+
+**Characteristics**:
+- Bilateral Contracts sit at every boundary in the system
+- They are structural design artifacts, not legal documents
+- Most boundaries have illegible (implicit, scattered, asymmetric) contracts by default
+- Contract engineering is the practice of making them legible
+- Contracts have temporal boundaries — review, renew, or retire on cadence
+- The contract stack is the coordination infrastructure of the organization
+- Stack coherence is testable: does every commitment in Contract A have a supporting commitment in Contract B?
+
+**Relationship to Other Primitives**:
+- **Protocols** execute within contract scope (how commitments are fulfilled)
+- **Parameters** define contract thresholds (quality standards, SLAs, timelines)
+- **Controllers** monitor contract compliance (metric vs. committed standard)
+- **Interface Definitions** specify the form contracts take (structure, fields, format)
+- **Meta-Control** reviews and updates the contract stack (stack coherence checking)
+- **Observers** aggregate contract compliance across the stack (portfolio-level view)
+
 ---
 
 ## System Relationships
@@ -364,6 +439,12 @@ Parameters → are enforced by → Controllers
 Controllers → trigger → Reactive Protocols
 Reactive Protocols → return system to → Parameter tolerances
 Meta-Control → modifies → Protocols, Parameters, Interface Definitions
+Bilateral Contracts → define commitments at → system boundaries
+Bilateral Contracts → are fulfilled through → Protocols
+Bilateral Contracts → use → Parameters (as SLAs, quality standards)
+Bilateral Contracts → are monitored by → Controllers
+Bilateral Contracts → chain into → Contract Stack (coordination infrastructure)
+Meta-Control → reviews coherence of → Contract Stack
 ```
 
 **Control Flow**:
@@ -392,9 +473,10 @@ Meta-Control → modifies → Protocols, Parameters, Interface Definitions
 - **Observers**: Computational PMF Observer (M0 OpKit), Trade Health Observer (to be implemented)
 - **OpKits**: Registry established in `/data/opkits/registry.json` (9 OpKits mapped to TUPs)
 - **Meta-Control**: Partially implemented through versioning, session logs, decision tracking
+- **Bilateral Contracts**: Concept registered (see `project_specs/CONTRACT_ENGINEERING.md`). Operator-Studio boundary partially legible (Operator Management Overview). Customer, employee, investor, advisor contracts not yet designed as formal bilateral TUPs. Contract stack not yet mapped.
 
 **Next Evolution**:
-As the Bootstrap system matures toward full Studio 3 operation, these primitives will become more formalized with explicit Protocol IDs, Controller definitions, Parameter registries, and Meta-Control processes.
+As the Bootstrap system matures toward full Studio 3 operation, these primitives will become more formalized with explicit Protocol IDs, Controller definitions, Parameter registries, Meta-Control processes, and Bilateral Contract templates for each stakeholder boundary.
 
 ---
 
@@ -413,3 +495,14 @@ As the Bootstrap system matures toward full Studio 3 operation, these primitives
 - Examples: Computational PMF Observer (M0), Trade Health Observer (OBS-001)
 - Updated numbering for subsequent primitives (Passets now #7, Meta-Control now #12)
 - Updated application notes: Controllers formalized, Observers with Trade Health implementation
+
+**v1.2.0 (2026-02-17)**:
+- Added Bilateral Contract primitive (13th primitive, from Danilo's contract engineering essay)
+- Bilateral Contract definition: structured bilateral commitment at a system boundary
+- Differentiated from Protocol (commitment vs. behavior) and Interface Definition (obligation vs. form)
+- Five contract types: Customer, Employee, Investor, Oracle/Advisor, Deployer
+- Introduced Contract Stack concept: chained bilateral contracts as coordination infrastructure
+- Added stack coherence checking as testable property
+- Updated system relationships diagram with contract chain relationships
+- Updated application notes: contracts registered, not yet operationalized
+- Reference: project_specs/CONTRACT_ENGINEERING.md

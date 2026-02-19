@@ -235,6 +235,8 @@ archive/        → Deprecated/historical files (including migrated XLSX)
 | **project_specs/CLAUDE_AS_OS_SYSTEM.md** | ✅ v1.0.0 | Complete specification for Claude Code as primary operational interface for Trade execution (spans M35, M36, M37, M40) | Planning operational infrastructure, understanding Claude-as-OS vision, before workshopping M35/M36/M37/M40 |
 | **project_specs/PASSET_FOLDER_STRUCTURE.md** | ✅ v2.0.0 | Implementation Passet folder structure specification (time × roles organization, ICL-0 through ICL-6) | Understanding passet architecture, building Implementation Passet, extracting tasks from Imagination Passet |
 | **project_specs/INTEGRATION_DESIGN_PRINCIPLES.md** | ✅ v1.0.0 | Six design principles for integrated document architecture (embed action, self-awareness, adjacent reflection, accumulation, structured departures, isomorphic structure) | Designing new documents/systems, auditing existing systems for integration quality, understanding high-phi information architecture |
+| **project_specs/CONTRACT_ENGINEERING.md** | ✅ v1.0.0 | Contract engineering: bilateral TUPs, contract stack architecture, boundary legibility. Source: Danilo's essay on contracts (Feb 2026) | Understanding bilateral commitment design, mapping contract stacks, designing stakeholder boundary TUPs, before workshopping customer/employee/investor/advisor TUPs |
+| **project_specs/CONTRACT_ENGINEERING_DISCUSSION.md** | ✅ v1.0.0 | Discussion notes: event-based operationalization, authority/verification tiers, smart contracts analysis, open questions for Danilo | Continuing contract engineering design, reviewing operationalization approach with Danilo |
 
 **Note**: Project specs define cross-TUP systems and architecture decisions. They guide workshop execution and ensure coherent system design.
 
@@ -365,6 +367,7 @@ See `data/manifest.json` for complete inventory with migration status, or `Maste
 | **Workshopping a TUP from scratch** | processes/TUP_Workshop_Protocol.md |
 | **Generating TUP reports for review** | processes/TUP_Report_Generation_Workflow.md |
 | **Creating enhanced TUP documentation with reasoning** | processes/TUP_Enhanced_Visualization_Protocol.md |
+| **Understanding bilateral commitments / contract stacks** | project_specs/CONTRACT_ENGINEERING.md |
 
 ---
 

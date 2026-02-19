@@ -16,7 +16,7 @@
 
 **General Manager (GM)** - Operational architect, system implementer. Currently: Caio.
 
-**Founder** - Strategic decision-maker, system designer. Danilo.
+**Founder** - Strategic decision-maker, system designer. Danilo (also referred to as "Nilo" or "Nilo" in his own writings, including the v10 Ops Model narrative tabs and external documents like the Three Models Implementation Guide).
 
 **Venture Partner (VP)** - Industry advisor and/or investor who supports a Trade. Provides domain expertise, makes introductions, may invest capital.
 
@@ -36,6 +36,7 @@
 - X = Complexity (execution difficulty)
 
 **Imagination Sprint** - 21-day strategic planning phase. Deliverables: market research, ICP, brand strategy, unit economics, GTM architecture, etc. Output: validated business plan.
+- **Updated estimate (2026-02):** With Claude as co-pilot, >90% of the imagination passet can be completed in under 2 weeks. At the highest Claude usage tier with more orchestration, estimated at ~2 days and trending downward as processes improve. The original v10 Launch Narrative assumed flash teams of 40-60 humans over 12 weeks; AI-augmented production compresses this dramatically.
 
 **Implementation Sprint** - 30-45 day asset production phase. Deliverables: 100+ ads, VSLs, landing pages, email sequences, store setup, etc. Output: ready-to-launch business.
 
