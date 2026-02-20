@@ -16,11 +16,15 @@
 
 **General Manager (GM)** - Operational architect, system implementer. Currently: Caio.
 
-**Founder** - Strategic decision-maker, system designer. Danilo (also referred to as "Nilo" or "Nilo" in his own writings, including the v10 Ops Model narrative tabs and external documents like the Three Models Implementation Guide).
+**Founder** - Strategic decision-maker, system designer. Danilo (also referred to as "Nilo" in his own writings, including the v10 Ops Model narrative tabs and external documents like the Three Models Implementation Guide).
 
 **Venture Partner (VP)** - Industry advisor and/or investor who supports a Trade. Provides domain expertise, makes introductions, may invest capital.
 
 **Strategic Marketing Advisor** - Grading, thesis evaluation, marketing expertise. Currently: Rhen.
+
+**Tools Specialist** - Stays current on latest deployment tools, platforms, integrations, and AI capabilities — knows what's possible and how to do it efficiently. Evaluates tool-task fit (e.g., "does Figma integrate well with Claude?", "what's the best way to deploy X?"). Studio-level function, not Trade-specific.
+
+**Labor Coordination Specialist** - Understands the segmentation of labor: what kind of person is best at what kind of work. Supports the modularity principle by informing casting decisions — when a TUP needs to be executed, this function helps determine the right profile for the job. May or may not be the same person as the Tools Specialist. Studio-level function.
 
 ---
 
