@@ -39,6 +39,52 @@
 
 ---
 
+## Session 2026-02-27 — Rollout Recruiting Cascade Build (Complete)
+
+**Operator**: Caio
+**Model**: claude-opus-4-6
+**Status**: Complete
+
+### Summary
+
+Built the complete rollout recruiting cascade package: 22 files across 5 subdirectories in `data/rollout/`. This is the system by which the Trade moves from imagination to execution — VA → MBA intern → VP → Operator, each node finding the next. Includes chain specification with risk analysis, VA package (5 files), MBA brief (6 files), VP brief (5 files), compliance system (3 files), and metadata. Updated Rollout Narrative to v0.6, registered package in manifest.json, reconciled M1 cross-references. Researched Cowork as deployment platform — found not viable for multi-node orchestration; recommended Hybrid (Code + Projects).
+
+### Decisions Made
+- DEC-CHAIN-001 (MBA comp): RESOLVED — equity, not cash (per Danilo)
+- DEC-CHAIN-002 (VP comp): PARTIALLY RESOLVED — equity confirmed, amount TBD (5-10%)
+- DEC-CHAIN-005 (VA comp): Cash out of pocket, amount TBD
+- DEC-CHAIN-007 (NEW): Pre-entity equity instruments — how to commit equity before entity formation
+- Deployment configuration: Hybrid (Code + Projects) recommended after Cowork research
+- Compliance tooling: Git repo (Phase 1) recommended over Notion/Sheets/project-mgmt tools
+- chain_specification.md Section 8: Franchise manual analogy documented honestly with recruitment selection risk
+
+### Actions Taken
+| # | Action | File(s) | Detail |
+|---|--------|---------|--------|
+| 1 | created | data/rollout/chain_specification.md | v1.1.0. Cascade definition, risk analysis (Section 8), 7 open decisions. ~400 lines. |
+| 2 | created | data/rollout/trade_pitch_onepager.md | 1-page Trade derivative for sourcing conversations |
+| 3 | created | data/rollout/compliance/agent_specification.md | Claude-as-workspace model, 5 deployment configs, Cowork research integrated |
+| 4 | created | data/rollout/compliance/deliverable_registry.md | 15 deliverables across 3 nodes, machine-readable, event-based |
+| 5 | created | data/rollout/compliance/tooling_requirements.md | 4 options evaluated, git repo recommended, chain_state.json schema |
+| 6 | created | data/rollout/va_package/ (5 files) | role_brief, sourcing_playbook, screening_criteria, outreach_templates, bilateral_contract |
+| 7 | created | data/rollout/mba_brief/ (6 files) | role_brief, vp_candidate_profile, sourcing_methodology, screening_criteria, pitch_materials, bilateral_contract |
+| 8 | created | data/rollout/vp_brief/ (5 files) | role_brief, integration_requirements, operator_recruitment, capital_formation, bilateral_contract |
+| 9 | created | data/rollout/_meta.json | Package metadata with structure, file count, open decisions |
+| 10 | updated | IonWave/IonWave_Rollout_Narrative.md | v0.5→v0.6. Added THE CASCADE section. Updated source docs. New version history entry. |
+| 11 | updated | data/manifest.json | Added rollout_package top-level entry. Updated last_updated date. |
+| 12 | updated | data/m1/operator_system.md | Added Cross-Package reference to rollout |
+| 13 | updated | data/m1/labor_chain_and_sequencing.md | Added Cross-Package reference to rollout chain_specification.md |
+
+### Next Steps
+- [ ] Resolve DEC-CHAIN-003 with Danilo: approval authority at handoffs (most critical open decision)
+- [ ] Resolve DEC-CHAIN-005 with Danilo: VA budget amount
+- [ ] Resolve DEC-CHAIN-007: pre-entity equity instrument structure (needs legal input)
+- [ ] Activate the chain: hire VA, hand off the VA Package
+- [ ] Create chain_state.json when VA engagement begins
+- [ ] Consider whether to complete remaining 6 imagination TUPs (BCL-0 and BCL-6 gaps) before or after cascade activation
+
+---
+
 ## Session 2026-02-17 — M36 Operational Infrastructure Workshop (Complete)
 
 **Operator**: Caio

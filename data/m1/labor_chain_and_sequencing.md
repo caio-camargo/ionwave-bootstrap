@@ -3,6 +3,7 @@
 **TUP**: M1 — Labor Chain & Deployment
 **Sources**: Tabs 145 (Labor Sequencing Framework), 146 (Studio 4 Taxonomy)
 **Cross-TUP**: M0 (Trade Thesis), M35 (Execution Plans), M36 (Operational Infra)
+**Cross-Package**: `data/rollout/chain_specification.md` — Recruiting cascade (VA → MBA → VP → Operator). Related but different from M1 employment chain: M1 describes post-hire employment hierarchy (L0-L5), rollout describes pre-hire recruiting cascade that converges at the Operator (L4).
 
 ---
 

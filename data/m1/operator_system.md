@@ -3,6 +3,7 @@
 **TUP**: M1 — Labor Chain & Deployment
 **Sources**: Tabs 149 (Operator Certification), 150 (Operator Toolkit), 151 (Operator Contract Template), 152 (Operator Onboarding Checklist)
 **Cross-TUP**: M9 (Ecommerce Infra — tech stack), M24 (Fulfillment — 3PL management), M30 (KPIs), M35 (Execution Plans)
+**Cross-Package**: `data/rollout/` — Recruiting cascade that leads to this operator role. VP brief references this document for operator recruitment. Chain specification (L4 node = this operator system).
 
 ---
 

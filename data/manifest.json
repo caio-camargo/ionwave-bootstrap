@@ -5,7 +5,19 @@
   "total_tups": 41,
   "migrated_tups": 29,
   "migration_status": "in_progress",
-  "last_updated": "2026-02-17",
+  "last_updated": "2026-02-27",
+  "rollout_package": {
+    "version": "1.0.0",
+    "description": "Recruiting cascade artifacts — VA → MBA intern → VP → Operator",
+    "location": "data/rollout/",
+    "meta_file": "data/rollout/_meta.json",
+    "file_count": 22,
+    "status": "draft",
+    "date_created": "2026-02-27",
+    "related_narrative": "IonWave/IonWave_Rollout_Narrative.md",
+    "open_decisions": 7,
+    "related_tups": ["m0", "m1", "m4", "m30", "m31", "m35", "m36"]
+  },
   "hypotheses_system": {
     "version": "1.0.0",
     "description": "Central registry for all business hypotheses with validation tracking",

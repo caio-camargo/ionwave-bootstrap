@@ -1,0 +1,255 @@
+{
+  "_meta": {
+    "description": "Week 1 task dependency graph for critical path extraction",
+    "version": "1.0.0",
+    "created": "2026-02-11",
+    "time_block": "ICL-0 Week 1",
+    "total_tasks": 10
+  },
+  "tasks": [
+    {
+      "id": "IMP-M2-001",
+      "name": "File Delaware C-Corp Incorporation",
+      "owner": "CoS / Founder",
+      "duration_hours": 3,
+      "dependencies": [],
+      "blocks": ["IMP-M2-002", "IMP-M2-006"],
+      "subtasks": 5,
+      "critical_path": true,
+      "priority": "P0"
+    },
+    {
+      "id": "IMP-M2-002",
+      "name": "Obtain Federal EIN",
+      "owner": "CoS / Founder",
+      "duration_hours": 0.5,
+      "dependencies": ["IMP-M2-001"],
+      "blocks": ["IMP-M2-003", "IMP-M2-004", "IMP-M9-001"],
+      "subtasks": 3,
+      "critical_path": true,
+      "priority": "P0"
+    },
+    {
+      "id": "IMP-M2-003",
+      "name": "File BOI Report with FinCEN",
+      "owner": "CoS / Founder",
+      "duration_hours": 0.75,
+      "dependencies": ["IMP-M2-001", "IMP-M2-002"],
+      "blocks": [],
+      "subtasks": 3,
+      "critical_path": false,
+      "priority": "P1",
+      "notes": "Must file within 90 days, not immediate blocker"
+    },
+    {
+      "id": "IMP-M2-004",
+      "name": "Hold Organizational Board Meeting",
+      "owner": "CoS / Founder",
+      "duration_hours": 2,
+      "dependencies": ["IMP-M2-001", "IMP-M2-002"],
+      "blocks": ["IMP-M2-005"],
+      "subtasks": 8,
+      "critical_path": true,
+      "priority": "P0"
+    },
+    {
+      "id": "IMP-M2-005",
+      "name": "Issue Founder Stock & File 83(b) Elections",
+      "owner": "CoS / Founder",
+      "duration_hours": 2,
+      "dependencies": ["IMP-M2-004"],
+      "blocks": [],
+      "subtasks": 3,
+      "critical_path": true,
+      "priority": "P0",
+      "notes": "83(b) deadline: 30 days from stock issuance"
+    },
+    {
+      "id": "IMP-M2-006",
+      "name": "Prepare Corporate Governance Documents",
+      "owner": "Lawyer (external)",
+      "duration_hours": 8,
+      "dependencies": ["IMP-M2-001"],
+      "blocks": ["IMP-M2-004"],
+      "subtasks": 7,
+      "critical_path": true,
+      "priority": "P0",
+      "notes": "Can start as soon as C-Corp filed"
+    },
+    {
+      "id": "IMP-M5-001",
+      "name": "Lock Final Formulation Specification",
+      "owner": "CoS (with formulator)",
+      "duration_hours": 4,
+      "dependencies": [],
+      "blocks": ["IMP-M5-002", "IMP-M8-001"],
+      "subtasks": 5,
+      "critical_path": true,
+      "priority": "P0",
+      "notes": "Parallel to entity formation, gates supplier sourcing (Week 2)"
+    },
+    {
+      "id": "IMP-M5-002",
+      "name": "Provide Bioavailability Documentation",
+      "owner": "Formulator / Consultant",
+      "duration_hours": 5,
+      "dependencies": ["IMP-M5-001"],
+      "blocks": [],
+      "subtasks": 4,
+      "critical_path": false,
+      "priority": "P1",
+      "notes": "Needed for FDA compliance (Week 2)"
+    },
+    {
+      "id": "IMP-M8-001",
+      "name": "Kickoff Brand Identity Project",
+      "owner": "Designer / Brand Consultant",
+      "duration_hours": 2,
+      "dependencies": ["IMP-M5-001"],
+      "blocks": [],
+      "subtasks": 7,
+      "critical_path": false,
+      "priority": "P1",
+      "notes": "Kickoff only, design work Week 2-4"
+    },
+    {
+      "id": "IMP-M9-001",
+      "name": "Set Up Shopify Store (Foundation)",
+      "owner": "CoS / Founder",
+      "duration_hours": 3,
+      "dependencies": ["IMP-M2-001", "IMP-M2-002"],
+      "blocks": [],
+      "subtasks": 7,
+      "critical_path": false,
+      "priority": "P2",
+      "notes": "Foundation only, full setup Week 3-4"
+    }
+  ],
+  "critical_path_sequence": [
+    {
+      "step": 1,
+      "task_id": "IMP-M2-001",
+      "name": "File C-Corp",
+      "duration_hours": 3,
+      "cumulative_hours": 3
+    },
+    {
+      "step": 2,
+      "task_id": "IMP-M2-002",
+      "name": "Obtain EIN",
+      "duration_hours": 0.5,
+      "cumulative_hours": 3.5
+    },
+    {
+      "step": 3,
+      "task_id": "IMP-M2-006",
+      "name": "Prepare Legal Docs",
+      "duration_hours": 8,
+      "cumulative_hours": 11.5,
+      "note": "Parallel to step 2, but gates step 4"
+    },
+    {
+      "step": 4,
+      "task_id": "IMP-M2-004",
+      "name": "Organizational Meeting",
+      "duration_hours": 2,
+      "cumulative_hours": 13.5
+    },
+    {
+      "step": 5,
+      "task_id": "IMP-M2-005",
+      "name": "Issue Stock & 83(b)",
+      "duration_hours": 2,
+      "cumulative_hours": 15.5
+    },
+    {
+      "step": "PARALLEL",
+      "task_id": "IMP-M5-001",
+      "name": "Lock Formulation",
+      "duration_hours": 4,
+      "note": "Parallel to entity formation, gates Week 2 supplier work"
+    }
+  ],
+  "parallel_tracks": [
+    {
+      "track_name": "Entity Formation (Critical Path)",
+      "tasks": ["IMP-M2-001", "IMP-M2-002", "IMP-M2-006", "IMP-M2-004", "IMP-M2-005"],
+      "total_duration_hours": 15.5,
+      "completion_gates": ["Bank account (Week 2)", "Fundraising (Week 3-4)"]
+    },
+    {
+      "track_name": "Product Foundation",
+      "tasks": ["IMP-M5-001", "IMP-M5-002"],
+      "total_duration_hours": 9,
+      "completion_gates": ["Supplier sourcing (Week 2)", "FDA compliance (Week 2)"]
+    },
+    {
+      "track_name": "Brand & Ecommerce Foundation",
+      "tasks": ["IMP-M8-001", "IMP-M9-001"],
+      "total_duration_hours": 5,
+      "completion_gates": ["Logo delivery (Week 2)", "Full ecommerce (Week 3-4)"]
+    }
+  ],
+  "blockers": [
+    {
+      "task_id": "IMP-M2-002",
+      "blocked_by": "IMP-M2-001",
+      "reason": "EIN requires filed Certificate of Incorporation"
+    },
+    {
+      "task_id": "IMP-M2-004",
+      "blocked_by": "IMP-M2-006",
+      "reason": "Organizational meeting requires legal documents from lawyer"
+    },
+    {
+      "task_id": "IMP-M2-005",
+      "blocked_by": "IMP-M2-004",
+      "reason": "Stock issuance requires board authorization from organizational meeting"
+    },
+    {
+      "task_id": "IMP-M9-001",
+      "blocked_by": "IMP-M2-002",
+      "reason": "Shopify requires EIN for business account setup"
+    },
+    {
+      "task_id": "IMP-M5-002",
+      "blocked_by": "IMP-M5-001",
+      "reason": "Bioavailability docs require locked formulation"
+    },
+    {
+      "task_id": "IMP-M8-001",
+      "blocked_by": "IMP-M5-001",
+      "reason": "Brand positioning requires product formulation"
+    }
+  ],
+  "completion_criteria": {
+    "week_1_complete": {
+      "must_complete": ["IMP-M2-001", "IMP-M2-002", "IMP-M2-005", "IMP-M5-001"],
+      "should_complete": ["IMP-M2-003", "IMP-M2-004", "IMP-M2-006", "IMP-M8-001", "IMP-M9-001"],
+      "can_defer": ["IMP-M5-002"],
+      "gates_week_2": {
+        "bank_account": "Requires IMP-M2-001, IMP-M2-002, IMP-M2-004",
+        "supplier_sourcing": "Requires IMP-M5-001",
+        "brand_design": "Requires IMP-M8-001"
+      }
+    }
+  },
+  "query_patterns": {
+    "what_is_next": {
+      "algorithm": "Find tasks where dependencies=[all completed] AND status=Not Started, sort by priority",
+      "example_output": "IMP-M2-001 (File C-Corp) - no dependencies, P0 priority, starts Week 1"
+    },
+    "what_is_blocking_me": {
+      "algorithm": "For current task, find all tasks in dependencies=[] that are Not Started or In Progress",
+      "example": "IMP-M2-004 is blocked by IMP-M2-006 (Prepare Legal Docs, status: In Progress)"
+    },
+    "critical_path": {
+      "algorithm": "Follow critical_path=true tasks in dependency order",
+      "current_path": ["IMP-M2-001", "IMP-M2-002", "IMP-M2-006", "IMP-M2-004", "IMP-M2-005"]
+    },
+    "can_i_work_on_this": {
+      "algorithm": "Check if all dependencies[] are status=Done",
+      "example": "Can I work on IMP-M9-001? Check: IMP-M2-001=Done? IMP-M2-002=Done? If both yes, proceed."
+    }
+  }
+}
