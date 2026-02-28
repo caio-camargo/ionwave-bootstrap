@@ -1,0 +1,9 @@
+[submodule "tup-system"]
+	path = tup-system
+	url = https://github.com/caio-camargo/studio3-tup-system
+[submodule "execution"]
+	path = execution
+	url = https://github.com/caio-camargo/ionwave-execution
+[submodule "ionwave"]
+	path = ionwave
+	url = https://github.com/caio-camargo/ionwave
