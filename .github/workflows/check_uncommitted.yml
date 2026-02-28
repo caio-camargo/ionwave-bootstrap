@@ -96,12 +96,14 @@ If you've been working in Claude Code sessions, that work may be sitting uncommi
 ### Action required
 At the end of every Claude session, run the commit guard:
 \`\`\`bash
-bash scripts/check_uncommitted.sh
+bash execution/scripts/check_uncommitted.sh
 \`\`\`
 
-If there are uncommitted files:
+If there are uncommitted files, commit within the relevant submodule first, then update the parent:
 \`\`\`bash
-git add data/ tracking/ SESSION_LOG.md ACTIVE_WORK.md
+# Example: commit data changes in ionwave submodule
+cd ionwave && git add data/ IonWave/ && git commit -m "..." && git push && cd ..
+git add ionwave execution SESSION_LOG.md ACTIVE_WORK.md
 git commit -m "Session N: <brief description of what was done>"
 git push origin main
 \`\`\`

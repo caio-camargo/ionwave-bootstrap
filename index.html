@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IonWave Mission Control</title>
-  <link rel="stylesheet" href="dashboard/css/styles.css">
+  <link rel="stylesheet" href="ionwave/dashboard/css/styles.css">
 </head>
 <body>
 
@@ -30,9 +30,9 @@
 
   <nav class="nav-bar">
     <a href="index.html" class="active">Mission Control</a>
-    <a href="dashboard/views/strategic-foundation.html">01 Strategic Foundation</a>
-    <a href="dashboard/views/market-intelligence.html">02 Market Intelligence</a>
-    <a href="dashboard/views/customer-research.html">03 Customer Research</a>
+    <a href="ionwave/dashboard/views/strategic-foundation.html">01 Strategic Foundation</a>
+    <a href="ionwave/dashboard/views/market-intelligence.html">02 Market Intelligence</a>
+    <a href="ionwave/dashboard/views/customer-research.html">03 Customer Research</a>
   </nav>
 
   <div id="stats-ribbon" class="stats-ribbon">
@@ -76,7 +76,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="dashboard/views/hypotheses-tracker.html" class="btn-primary">View Tracker →</a>
+          <a href="ionwave/dashboard/views/hypotheses-tracker.html" class="btn-primary">View Tracker →</a>
         </div>
       </div>
 
@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="https://github.com/caio-camargo/ionwave-dashboard/blob/main/IonWave/Hypothesis_Dependency_Audit.md" class="btn-primary" target="_blank">View Audit →</a>
+          <a href="https://github.com/caio-camargo/ionwave/blob/main/IonWave/Hypothesis_Dependency_Audit.md" class="btn-primary" target="_blank">View Audit →</a>
         </div>
       </div>
 
@@ -112,7 +112,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <a href="https://github.com/caio-camargo/ionwave-dashboard/blob/main/data/hypotheses/validation_log.json" class="btn-primary" target="_blank">View Log →</a>
+          <a href="https://github.com/caio-camargo/ionwave/blob/main/data/hypotheses/validation_log.json" class="btn-primary" target="_blank">View Log →</a>
         </div>
       </div>
     </div>
@@ -146,11 +146,11 @@
   <footer class="footer">
     IonWave Mission Control &middot; Trade #84 &middot;
     Data loaded dynamically from JSON &middot;
-    <a href="https://caio-camargo.github.io/ionwave-dashboard/">GitHub Pages</a>
+    <a href="https://caio-camargo.github.io/ionwave-bootstrap/">GitHub Pages</a>
   </footer>
 
-  <script src="dashboard/js/data-loader.js"></script>
-  <script src="dashboard/js/renderers.js"></script>
+  <script src="ionwave/dashboard/js/data-loader.js"></script>
+  <script src="ionwave/dashboard/js/renderers.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async function() {
       const manifest = await DataLoader.loadManifest();
@@ -309,7 +309,7 @@
 
       let deliverablesHtml = '';
       for (const d of deliverables) {
-        const githubUrl = `https://github.com/caio-camargo/ionwave-dashboard/blob/main/IonWave/${d.file}`;
+        const githubUrl = `https://github.com/caio-camargo/ionwave/blob/main/IonWave/${d.file}`;
         const statusColor = d.status === 'complete' ? 'var(--color-success)' : 'var(--color-warning)';
         deliverablesHtml += `
           <div class="card">
