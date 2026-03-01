@@ -1,12 +1,12 @@
 # START HERE - Studio 3 Imagination Generation System
-**Version**: v2.4.0
+**Version**: v2.5.0
 **Author**: Caio, Claude (collaborative)
 **Date Created**: 2026-02-03
-**Last Updated**: 2026-02-06
+**Last Updated**: 2026-03-01
 **AI Model**: claude-sonnet-4-5-20250929
 **Purpose**: Single entry point for Studio 3 Imagination project - read this first every session
 **Status**: Final
-**Related Files**: DOCUMENTATION_INDEX.md, processes/Dependency_Map.md, data/manifest.json (TUP-based)
+**Related Files**: DOCUMENTATION_INDEX.md, tup-system/processes/Dependency_Map.md, ionwave/data/manifest.json (TUP-based)
 
 ---
 
@@ -28,13 +28,48 @@
 
 ## Current File Structure
 
-### Data Layer — `data/` (TUP-based JSON, machine-optimized)
+### Repository Layout — Git Submodules
+
+This project uses **4 git repositories** in a parent + 3 submodule structure:
+
+```
+ionwave-bootstrap/          ← parent repo (orchestration layer)
+│   00_start_here.md, CLAUDE.md, ACTIVE_WORK.md, SESSION_LOG.md
+│   index.html              ← dashboard entry point (GitHub Pages root)
+│   .github/workflows/      ← Pages deployment + stale-commit alert
+│
+├── tup-system/             ← submodule: studio3-tup-system (reusable methodology)
+│   ├── core/               ← Required reading (Glossary, What_We_Did, Working_Principles)
+│   ├── processes/          ← TUP Workshop Protocol, JSON Migration Guide, CI Protocol, etc.
+│   ├── systems/            ← System overviews (CM, ODD, School, TUP, Trade, etc.)
+│   ├── standards/          ← Standards & guidelines (metadata, versioning, architecture)
+│   ├── protocols/          ← Meta-Control protocols (CSP-001, case studies)
+│   └── ci-protocol/        ← Competitive Intelligence Protocol (10-file workflow)
+│
+├── execution/              ← submodule: ionwave-execution (IonWave ops layer)
+│   ├── tracking/           ← 42+ live tracking logs (append-only)
+│   ├── passets/            ← Passive assets, rollout phase plans
+│   └── scripts/            ← check_uncommitted.sh, TUP report generators
+│
+└── ionwave/                ← submodule: ionwave (IonWave knowledge + data layer)
+    ├── IonWave/            ← Analysis deliverables (.md)
+    ├── data/               ← TUP JSON data, hypotheses, opkits, crosswalk
+    └── dashboard/          ← Dashboard CSS, JS, HTML views
+```
+
+**Repos on GitHub:**
+- Parent: https://github.com/caio-camargo/ionwave-bootstrap
+- TUP system: https://github.com/caio-camargo/studio3-tup-system
+- Execution: https://github.com/caio-camargo/ionwave-execution
+- IonWave: https://github.com/caio-camargo/ionwave
+
+### Data Layer — `ionwave/data/` (TUP-based JSON, machine-optimized)
 **This is the primary data source for Claude and the dashboard.**
 
 **Organization:** TUP-based (Trade Unit Projects). 3 TUPs migrated to JSON, 38 TUPs pending migration.
 
 ```
-data/
+ionwave/data/
 ├── manifest.json                         ← MASTER INDEX: TUP-based, load this first for full project orientation
 ├── hypotheses/                           ← 🧪 HYPOTHESES ARCHITECTURE (ontological primitive)
 │   ├── registry.json                     ← Central registry of 8 core business hypotheses
@@ -42,11 +77,7 @@ data/
 │   └── validation_log.json               ← Chronological event log (11+ events)
 ├── m0_trade_thesis/                      ← M0 Trade Thesis (5 sheets, migrated from 01)
 │   ├── _meta.json                        ← TUP-level metadata, dependencies, feedback loops
-│   ├── assumptions_register.json
-│   ├── interview_insights.json
-│   ├── narrative_hypotheses.json
-│   ├── odd1_thesis.json
-│   └── thesis.json
+│   └── ... (5 sheet files)
 ├── m26_competitive_intel/                ← M26 Competitive Intel (10 sheets, migrated from 02)
 │   ├── _meta.json
 │   └── ... (10 sheet files)
@@ -64,8 +95,8 @@ data/
 - Data types: `structured_table`, `narrative`, `hybrid`, `template`
 - Inline confidence metadata on data points where applicable (A/B/C/D grading)
 
-**For migrating more TUPs:** See `processes/JSON_Migration_Guide.md`
-**For hypothesis tracking:** See `data/hypotheses/registry.json` and dashboard hypotheses tracker
+**For migrating more TUPs:** See `tup-system/processes/JSON_Migration_Guide.md`
+**For hypothesis tracking:** See `ionwave/data/hypotheses/registry.json` and dashboard hypotheses tracker
 
 ### Archived Bootstrap Files — `archive/bootstrap-xlsx-pre-tup-migration/`
 **Original Bootstrap XLSX files (01-38) archived during TUP migration.**
@@ -74,13 +105,12 @@ All 42 XLSX files (including version variants) moved to archive:
 - 01-03B: Migrated to TUPs M0, M26, M27 (JSON)
 - 04-38: Unmigrated, archived as reference (superseded by Danilo's TUP files)
 
-**Reference:** See `data/crosswalk.json` for Bootstrap → TUP mapping, or `data/manifest.json` for current TUP inventory
+**Reference:** See `ionwave/data/crosswalk.json` for Bootstrap → TUP mapping, or `ionwave/data/manifest.json` for current TUP inventory
 
-### Dashboard — `dashboard/`
+### Dashboard — `ionwave/dashboard/`
 **Dynamic multi-page dashboard powered by TUP-based JSON data layer.**
 ```
-dashboard/
-├── index.html                    ← Mission Control (loads manifest.json, shows TUP status)
+ionwave/dashboard/
 ├── css/styles.css                ← Dark theme stylesheet
 ├── js/
 │   ├── data-loader.js            ← Fetches and caches JSON data
@@ -89,13 +119,14 @@ dashboard/
     ├── tup-navigator.html        ← 🗺️ TUP/Cluster system navigator
     ├── hypotheses-tracker.html   ← 🧪 Hypotheses system tracker
     ├── financial-forecast.html   ← 📊 Financial model scenarios
-    ├── m0-trade-thesis.html      ← M0 Trade Thesis (formerly strategic-foundation)
-    ├── m26-competitive-intel.html ← M26 Competitive Intel (formerly market-intelligence)
-    └── m27-customer-research.html ← M27 Customer Research (merged 03A ICP + 03B VOC)
+    ├── m0-trade-thesis.html      ← M0 Trade Thesis
+    ├── m26-competitive-intel.html ← M26 Competitive Intel
+    └── m27-customer-research.html ← M27 Customer Research
 ```
 
-**Live at:** https://caio-camargo.github.io/ionwave-dashboard/
-**Repo:** https://github.com/caio-camargo/ionwave-dashboard
+**Entry point:** `index.html` at parent repo root (references `ionwave/dashboard/` assets)
+**Live at:** https://caio-camargo.github.io/ionwave-bootstrap/
+**Repo:** https://github.com/caio-camargo/ionwave-bootstrap
 
 **Key Dashboard Views:**
 - **Mission Control** - TUP overview (3 migrated, 38 pending), cluster map, dependency chains, analysis deliverables
@@ -104,20 +135,7 @@ dashboard/
 - **📊 Financial Forecast** - 3-scenario financial model, timeline analysis, go/no-go frameworks
 - **TUP Views** - Dynamic rendering of migrated TUP data (M0, M26, M27 currently available)
 
-### Documentation Folders
-```
-IonWave/        → Analysis deliverables (Strategic Foundation, Porter's, ICP, Market Sizing, Financial Model, etc.)
-core/           → Required reading (02_Glossary, 03_What_We_Did, 04_Working_Principles)
-standards/      → Standards & guidelines (metadata, versioning, deliverable structure, architecture)
-systems/        → System overviews (CM, ODD, School, TUP, Trade, etc.)
-tracking/       → 42 live tracking logs (append-only, not versioned) + Open_Questions.md
-processes/      → Process docs (Dependency_Map, JSON_Migration_Guide, demos)
-protocols/      → Formal Meta-Control protocols (CSP-001 Constraint Scenarios, case studies)
-ci-protocol/    → Competitive Intelligence Protocol (10-file workflow)
-archive/        → Deprecated/historical files (including migrated XLSX files)
-```
-
-**Key Analysis Deliverables (`IonWave/`):**
+**Key Analysis Deliverables (`ionwave/IonWave/`):**
 - Strategic_Foundation_Analysis.md - Thesis reconciliation, capital tension analysis
 - Porter_Five_Forces_Analysis.md - Market structure analysis
 - ICP_Analysis.md - Customer segmentation, jobs-to-be-done
@@ -127,20 +145,25 @@ archive/        → Deprecated/historical files (including migrated XLSX files)
 
 ### Version Control — Git / GitHub
 
-**Repo:** https://github.com/caio-camargo/ionwave-dashboard
-**Branch:** `main` (single branch, deployed to GitHub Pages)
+**Parent repo:** https://github.com/caio-camargo/ionwave-bootstrap
+**Branch:** `main` (single branch, deployed to GitHub Pages via Actions)
 
-**`.gitignore` policy:**
-- `*.xlsx` — XLSX files are NOT version-controlled. JSON is source of truth for migrated files; non-migrated XLSX remain local only.
+**Submodule commit pattern** — always commit inside the submodule first, then update the parent reference:
+```bash
+# Example: saving TUP workshop output
+cd ionwave && git add data/ IonWave/ && git commit -m "..." && git push && cd ..
+git add ionwave && git commit -m "Update submodule ref: ionwave" && git push
+# Example: saving tracking logs
+cd execution && git add tracking/ && git commit -m "..." && git push && cd ..
+git add execution && git commit -m "Update submodule ref: execution" && git push
+```
+
+**`.gitignore` policy (parent repo):**
+- `*.xlsx` — XLSX files are NOT version-controlled
 - `archive/` — Deprecated/historical files
 - `.claude/` — Claude Code internal state
-- Python artifacts, OS files
 
-**What gets committed:** `data/`, `dashboard/`, `processes/`, `standards/`, `core/`, `ci-protocol/`, root `.md` files, `IonWave/*.md` analysis deliverables.
-
-**What does NOT get committed:** `IonWave/*.xlsx`, `archive/`, `.claude/`
-
-**Deployment:** Push to `origin/main` → auto-deploys to GitHub Pages. See `DASHBOARD_UPDATE_GUIDE.md` for deploy procedure.
+**Deployment:** Push to `origin/main` → GitHub Actions runs `deploy-pages.yml` with `submodules: recursive` → auto-deploys to GitHub Pages.
 
 ### Deprecated Files (Reference Only)
 **IonWave_Ops_Model_v10_Organized.xlsx** - 681-sheet comprehensive model
@@ -157,24 +180,24 @@ archive/        → Deprecated/historical files (including migrated XLSX files)
 **Every session, read these first:**
 
 1. **This document** (00_START_HERE.md) ← You are here
-2. **`data/manifest.json`** - Machine-readable project index (all 38 files, dependencies, migration status)
-3. **core/02_Glossary.md** - Key terminology and definitions
-4. **core/03_What_We_Did.md** - Project history and methodology evolution
-5. **core/04_Working_Principles_updated.md** - How we work together
+2. **`ionwave/data/manifest.json`** - Machine-readable project index (all 41 TUPs, dependencies, migration status)
+3. **tup-system/core/02_Glossary.md** - Key terminology and definitions
+4. **tup-system/core/03_What_We_Did.md** - Project history and methodology evolution
+5. **tup-system/core/04_Working_Principles_updated.md** - How we work together
 
 **When working with Trade file data:**
-- **Migrated files (01-03B):** Read from `data/{file_id}/` — load `_meta.json` first, then individual sheet JSONs
-- **Non-migrated files (04-38):** Still in `IonWave/` as XLSX — requires openpyxl or manual reading
-- **Migration process:** See `processes/JSON_Migration_Guide.md`
+- **Migrated files (M0, M26, M27):** Read from `ionwave/data/{tup_id}/` — load `_meta.json` first, then individual sheet JSONs
+- **Non-migrated files:** Still being workshopped — check `ionwave/data/{tup_id}/` for any existing content
+- **Migration process:** See `tup-system/processes/JSON_Migration_Guide.md`
 
 **When creating any document:**
-- **standards/Document_Metadata_Standards.md** - Required metadata, versioning rules, document classes
+- **tup-system/standards/Document_Metadata_Standards.md** - Required metadata, versioning rules, document classes
 
 **When looking for something:**
-- **`data/manifest.json`** - Primary index: all 38 files with migration status, dependencies, quality scores
+- **`ionwave/data/manifest.json`** - Primary index: all 41 TUPs with migration status, dependencies, quality scores
 - **DOCUMENTATION_INDEX.md** - Complete inventory of all documentation files
 - **Master_Index.md** - Legacy sheet-by-sheet index (still accurate for non-migrated files)
-- **processes/Dependency_Map.md** - File relationships and workflow sequences
+- **tup-system/processes/Dependency_Map.md** - File relationships and workflow sequences
 
 ---
 
@@ -185,7 +208,7 @@ archive/        → Deprecated/historical files (including migrated XLSX files)
 - **Versioning**: Auto-increment patch (+0.0.1), tracked in standards/VERSION_MANIFEST.md
 - **Document Classes**: Versioned operational, Methodology/framework, Ephemeral process, Live tracking
 
-See `standards/Document_Metadata_Standards.md` for complete requirements.
+See `tup-system/standards/Document_Metadata_Standards.md` for complete requirements.
 
 ### Quality Standards
 - **Confidence Grading**: A/B/C/D scale for all factual claims
@@ -195,23 +218,23 @@ See `standards/Document_Metadata_Standards.md` for complete requirements.
   - D: Best guess with documented upgrade path
 
 - **Hypotheses Architecture**: Business assumptions tracked as ontological primitives
-  - **Registry**: `data/hypotheses/registry.json` - 8 core hypotheses with revision history
-  - **Index**: `data/hypotheses/index.json` - Bidirectional hypothesis ↔ document linking (53+ refs)
-  - **Validation Log**: `data/hypotheses/validation_log.json` - Chronological event log
+  - **Registry**: `ionwave/data/hypotheses/registry.json` - 8 core hypotheses with revision history
+  - **Index**: `ionwave/data/hypotheses/index.json` - Bidirectional hypothesis ↔ document linking (53+ refs)
+  - **Validation Log**: `ionwave/data/hypotheses/validation_log.json` - Chronological event log
   - **State Machine**: ASSUMED → TESTING → VALIDATED/INVALIDATED
   - **Grading**: A/B/C/D confidence grades with transparent weak link detection
   - **Dependencies**: feeds_into/depends_on relationships showing hypothesis chains
   - **Sub-Hypotheses**: Arbitrarily nestable (HYP-XXX.Y.Z), weighted composite scoring, created via CSP-001
-  - **Constraint Scenario Protocol**: `protocols/CSP-001_Constraint_Scenario_Protocol.md` — stress-test hypotheses to surface hidden assumptions
-  - **View**: https://caio-camargo.github.io/ionwave-dashboard/views/hypotheses-tracker.html
+  - **Constraint Scenario Protocol**: `tup-system/protocols/CSP-001_Constraint_Scenario_Protocol.md` — stress-test hypotheses to surface hidden assumptions
+  - **View**: https://caio-camargo.github.io/ionwave-bootstrap/ionwave/dashboard/views/hypotheses-tracker.html
 
 - **Deliverable Structure**: Three mandatory sections
   - Section 1: Main Content (with inline confidence tags)
   - Section 2: Intelligence Gaps (what we don't know, impact analysis, validation paths)
   - Section 3: Scorecard (quality self-assessment, upgrade shopping list)
 
-See `core/04_Working_Principles_updated.md` for complete evidence standards.
-See `IonWave/Hypothesis_Dependency_Audit.md` for hypothesis system documentation.
+See `tup-system/core/04_Working_Principles_updated.md` for complete evidence standards.
+See `ionwave/IonWave/Hypothesis_Dependency_Audit.md` for hypothesis system documentation.
 
 ### Inline Quality Documentation
 **Every claim must self-document its quality:**
@@ -219,7 +242,7 @@ See `IonWave/Hypothesis_Dependency_Audit.md` for hypothesis system documentation
 [Confidence: A | Source: drinklmnt.com/pricing | Verified: 2026-01-31]
 ```
 
-See `standards/Deliverable_Structure_Standards.md` for detailed requirements.
+See `tup-system/standards/Deliverable_Structure_Standards.md` for detailed requirements.
 
 ---
 
@@ -257,7 +280,7 @@ Claude will ask 10-20 structured questions to understand:
 ### Working with Dependencies
 Files have dependencies - changing one may require updating others.
 
-See `processes/Dependency_Map.md` for:
+See `tup-system/processes/Dependency_Map.md` for:
 - Dependency chains (what feeds into what)
 - Workflow sequences (recommended order of work)
 - Which files must be updated together
@@ -277,13 +300,13 @@ Files are mapped to Danilo's TUP (Trade Unit Project) and Cluster hierarchy via 
 | BCL-6 | Operations & Infra | M1, M9, M24, M30-M31, M35-M37 | 04, 15, 16, 18, 19, 28, 31 | Danilo canon |
 | BCL-7 | Governance & School | M32, M33 | 23, 30, 32, 33, 35 | Deferred |
 
-**To find a TUP's OpKit or content:** Ask Claude. Claude navigates `crosswalk.json` and `manifest.json` to locate the right files.
-**Full reconciliation log:** `tracking/Reconciliation_Decision_Log.md`
-**Reconciliation audit:** `IonWave/Reconciliation_Audit.md`
+**To find a TUP's OpKit or content:** Ask Claude. Claude navigates `ionwave/data/crosswalk.json` and `ionwave/data/manifest.json` to locate the right files.
+**Full reconciliation log:** `execution/tracking/Reconciliation_Decision_Log.md`
+**Reconciliation audit:** `ionwave/IonWave/Reconciliation_Audit.md`
 
 ### Ontological Primitives
 
-The system's formal entities (full definitions in `standards/Systems_Architecture_Standards.md`):
+The system's formal entities (full definitions in `tup-system/standards/Systems_Architecture_Standards.md`):
 - **Hypothesis** — testable business assumption with confidence grades and validation lifecycle (registry: `data/hypotheses/`)
 - **TUP** — Trade Unit Project, the fundamental unit of knowledge about one subject
 - **Protocol** — minimal executable unit of work (Process, Gate, Reactive, Meta-Control types)
@@ -296,29 +319,29 @@ The system's formal entities (full definitions in `standards/Systems_Architectur
 - **Meta-Control** — system-level supervisory module that tunes protocols, parameters, and controllers
 
 ### Finding Things
-- **Full project orientation (Claude)?** → `data/manifest.json` (load first every session)
-- **System architecture primitives?** → `standards/Systems_Architecture_Standards.md` (Protocol, Parameter, Controller, OpKit, Passet, Meta-Control)
-- **TUP/Cluster mapping?** → `data/crosswalk.json` (maps file numbers to Danilo's TUP codes)
-- **Reconciliation decisions?** → `tracking/Reconciliation_Decision_Log.md`
-- **Project status at a glance (human)?** → [Dashboard](https://caio-camargo.github.io/ionwave-dashboard/) — see DASHBOARD_UPDATE_GUIDE.md
-- **Business hypotheses/assumptions?** → `data/hypotheses/registry.json` or [Hypotheses Tracker](https://caio-camargo.github.io/ionwave-dashboard/views/hypotheses-tracker.html)
-- **Hypothesis evidence mapping?** → `data/hypotheses/index.json` or `IonWave/Hypothesis_Dependency_Audit.md`
-- **Critical strategic questions?** → `tracking/Open_Questions.md` (Q9, Q10, Q11 analyzed)
-- **Specific TUP data (migrated)?** → `data/{tup_id}/` (M0, M26, M27 available as JSON)
+- **Full project orientation (Claude)?** → `ionwave/data/manifest.json` (load first every session)
+- **System architecture primitives?** → `tup-system/standards/Systems_Architecture_Standards.md` (Protocol, Parameter, Controller, OpKit, Passet, Meta-Control)
+- **TUP/Cluster mapping?** → `ionwave/data/crosswalk.json` (maps file numbers to Danilo's TUP codes)
+- **Reconciliation decisions?** → `execution/tracking/Reconciliation_Decision_Log.md`
+- **Project status at a glance (human)?** → [Dashboard](https://caio-camargo.github.io/ionwave-bootstrap/) — see DASHBOARD_UPDATE_GUIDE.md
+- **Business hypotheses/assumptions?** → `ionwave/data/hypotheses/registry.json` or [Hypotheses Tracker](https://caio-camargo.github.io/ionwave-bootstrap/ionwave/dashboard/views/hypotheses-tracker.html)
+- **Hypothesis evidence mapping?** → `ionwave/data/hypotheses/index.json` or `ionwave/IonWave/Hypothesis_Dependency_Audit.md`
+- **Critical strategic questions?** → `execution/tracking/Open_Questions.md` (Q9, Q10, Q11 analyzed)
+- **Specific TUP data (migrated)?** → `ionwave/data/{tup_id}/` (M0, M26, M27 available as JSON)
 - **Specific TUP data (not migrated)?** → Archived in `archive/bootstrap-xlsx-pre-tup-migration/` (reference only, superseded by Danilo's TUP files)
-- **Sheet-level index?** → `data/manifest.json` (migrated files) or `Master_Index.md` (all files)
+- **Sheet-level index?** → `ionwave/data/manifest.json` (migrated files) or `Master_Index.md` (all files)
 - **Looking for a document?** → DOCUMENTATION_INDEX.md
-- **Understanding dependencies?** → processes/Dependency_Map.md (or `manifest.json` dependency_chains)
-- **Checking current version?** → standards/VERSION_MANIFEST.md
-- **Creating a document?** → standards/Document_Metadata_Standards.md
-- **Structuring a deliverable?** → standards/Deliverable_Structure_Standards.md
-- **Migrating a file to JSON?** → processes/JSON_Migration_Guide.md
-- **Stress-testing hypotheses?** → `protocols/CSP-001_Constraint_Scenario_Protocol.md` (10-step constraint scenario process)
-- **Seeing a CSP case study?** → `protocols/case_studies/CSP-001_HYP-006_2026-02-06.md` (first worked example)
-- **Workshopping a TUP?** → `processes/TUP_Workshop_Protocol.md` (11-phase process: research, persona dialogue, OpKit creation)
-- **TUP workshop progress?** → `tracking/TUP_Workshop_Tracker.md` (38 TUPs queued, effort estimates, wave order)
-- **Running competitive intelligence?** → ci-protocol/00_INDEX.md (worked example of TWP applied to CI)
-- **Applying expert frameworks?** → ci-protocol/07_FRAMEWORKS.md (worked examples for CI personas)
+- **Understanding dependencies?** → `tup-system/processes/Dependency_Map.md` (or `manifest.json` dependency_chains)
+- **Checking current version?** → `tup-system/standards/VERSION_MANIFEST.md`
+- **Creating a document?** → `tup-system/standards/Document_Metadata_Standards.md`
+- **Structuring a deliverable?** → `tup-system/standards/Deliverable_Structure_Standards.md`
+- **Migrating a file to JSON?** → `tup-system/processes/JSON_Migration_Guide.md`
+- **Stress-testing hypotheses?** → `tup-system/protocols/CSP-001_Constraint_Scenario_Protocol.md` (10-step constraint scenario process)
+- **Seeing a CSP case study?** → `tup-system/protocols/case_studies/CSP-001_HYP-006_2026-02-06.md` (first worked example)
+- **Workshopping a TUP?** → `tup-system/processes/TUP_Workshop_Protocol.md` (11-phase process: research, persona dialogue, OpKit creation)
+- **TUP workshop progress?** → `execution/tracking/TUP_Workshop_Tracker.md` (38 TUPs queued, effort estimates, wave order)
+- **Running competitive intelligence?** → `tup-system/ci-protocol/00_INDEX.md` (worked example of TWP applied to CI)
+- **Applying expert frameworks?** → `tup-system/ci-protocol/07_FRAMEWORKS.md` (worked examples for CI personas)
 
 ---
 
@@ -379,7 +402,7 @@ Now applying established frameworks to:
 - Elevate quality from 4-6/10 to 8-9/10 across all deliverables
 - Create proven patterns for future Trades
 
-**Next Actions:** Reference `processes/Dependency_Map.md` for recommended work sequence, or `data/manifest.json` for per-file status and blockers.
+**Next Actions:** Reference `tup-system/processes/Dependency_Map.md` for recommended work sequence, or `ionwave/data/manifest.json` for per-file status and blockers.
 
 ---
 
@@ -447,16 +470,16 @@ Run through this checklist before ending a session:
    - Does `DOCUMENTATION_INDEX.md` list any new files created this session?
    - Does `data/manifest.json` reflect any new data files or status changes?
 
-4. **Commit and push**
-   - Stage all relevant changes (data, dashboard, docs, tracking)
-   - Commit with descriptive message
-   - Push to `origin/main` to deploy dashboard updates
-   - Verify no untracked files that should be committed
+4. **Commit and push** (submodule-aware)
+   - Commit inside any modified submodule first, then push, then update parent reference
+   - Pattern: `cd ionwave && git add data/ IonWave/ && git commit -m "..." && git push && cd ..`
+   - Then: `git add ionwave execution SESSION_LOG.md ACTIVE_WORK.md && git commit && git push`
+   - GitHub Actions deploys to Pages automatically on every push to main
 
 5. **Reconciliation check** (if applicable)
-   - Are any new reconciliation decisions made? Update `tracking/Reconciliation_Decision_Log.md`
-   - Does `IonWave/Reconciliation_Audit.md` need a version bump?
-   - Does `data/crosswalk.json` need updates?
+   - Are any new reconciliation decisions made? Update `execution/tracking/Reconciliation_Decision_Log.md`
+   - Does `ionwave/IonWave/Reconciliation_Audit.md` need a version bump?
+   - Does `ionwave/data/crosswalk.json` need updates?
 
 6. **Pending items** — explicitly note anything left unfinished in SESSION_LOG next steps
 
@@ -465,6 +488,17 @@ Run through this checklist before ending a session:
 ---
 
 ## Version History
+
+**v2.5.0 (2026-03-01):**
+- **MAJOR: Submodule restructure** — monorepo split into 4 git repos
+- `studio3-tup-system` submodule at `tup-system/`: core/, processes/, systems/, standards/, protocols/, ci-protocol/ (reusable across all Studio 3 trades)
+- `ionwave-execution` submodule at `execution/`: tracking/, passets/, scripts/
+- `ionwave` submodule at `ionwave/`: IonWave/, data/, dashboard/
+- Parent repo renamed `ionwave-dashboard` → `ionwave-bootstrap`
+- GitHub Pages URL updated to `caio-camargo.github.io/ionwave-bootstrap/`
+- Pages deployment switched from "branch" mode to GitHub Actions (`deploy-pages.yml`) with `submodules: recursive` checkout
+- All internal path references updated throughout (data/ → ionwave/data/, core/ → tup-system/core/, tracking/ → execution/tracking/, etc.)
+- `CLAUDE.md` updated with submodule commit pattern and new script paths
 
 **v2.4.0 (2026-02-06):**
 - **MAJOR: TUP Migration** - Deprecated Bootstrap file numbering (01-38), adopted TUP-based organization (M0-M40)
@@ -524,4 +558,4 @@ Run through this checklist before ending a session:
 
 ---
 
-**Now read core/02_Glossary.md →**
+**Now read tup-system/core/02_Glossary.md →**
