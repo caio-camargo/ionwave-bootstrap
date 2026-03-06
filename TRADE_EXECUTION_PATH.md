@@ -2,9 +2,9 @@
 
 > **Audience:** Operator, VP, CoS, or investor who needs to understand how the Trade works — end to end — without reading the 893-tab spreadsheet.
 >
-> **What this document is:** The single source of truth for the IonWave Trade execution path. It synthesizes the Trade Scorecard, Trade Structure, Execution Tracker, Phase 0 Setup, Execution Gap Analysis, Parallel Execution Map, TUP Lifecycle, and Trade Evolution Model into one readable artifact.
+> **What this document is:** The single source of truth for the IonWave Trade execution path — from studio phase (flash teams building the Trade) through business phase (operator running IonWave to graduation). It reconciles the Flash Teams Model and the Labor Chain Model into one unified path, and synthesizes 13 source tabs from the ops model into one readable artifact.
 >
-> **Last updated:** 2026-03-03
+> **Last updated:** 2026-03-06
 
 ---
 
@@ -129,20 +129,124 @@ Investors ──→ Trade (at holding level)
 
 ---
 
-## 4. The Execution Phases
+## 4. The Two Execution Models (Reconciled)
 
-The Trade executes in five sequential phases. Each phase has an entry gate, specific tasks with owners, and a verified exit gate.
+The Trade executes through **two sequential models** that hand off at the funding event. Understanding both is critical — they use different people, different structures, and different timelines, but they are one continuous path.
+
+### Model A: Flash Teams (Studio Phase — Pre-Funding, Weeks 0–12)
+
+Builds and validates the **imagination passet** — the complete, expert-reviewed Trade. Uses the Stanford flash teams model: small, scoped sprints. People flash in, produce a deliverable, dissolve. 40-60 people may touch the Trade, most for less than 3 weeks.
+
+**Persistent roles (stay for the full cycle):**
+- **Librarian (Elaine)** — Custody of the Trade. Distributes slices. Updates master. Routes dependencies.
+- **Conductor** — Sources flash team members. Manages pipeline. Handles logistics. Uses Recruiting Operations as playbook.
+- **MC** — On-air entrance/exit conversations for every person. Daily updates. Makes the process visible and compelling.
+
+**Flash roles (sprint in, sprint out):**
+- PM co-founders (1 per cluster, 2-3 week sprints, produce 4-8 TUPs)
+- Expert reviewers (10-20 hours, grade TUPs A/B/C/D/F, dissolve)
+- Funnel builder, series producer, product person (each a 2-3 week sprint)
+
+**Danilo** is on-call SME — writes specific essays when asked, not in the hiring/scheduling/approval loop.
+
+### Model B: Labor Chain (Business Phase — Post-Funding, Weeks 12–48+)
+
+Hires and equips an **Operator** who executes the locked Trade as a running business. Traditional sequential hiring chain with larger equity/comp, sustained roles.
+
+**The chain:** VA → CoS → Recruiter → Operator → Running Business
+
+### How they connect
+
+```
+STUDIO PHASE (Model A)                    BUSINESS PHASE (Model B)
+Weeks 0-12                                Weeks 12-48+
+─────────────────────────────────────────────────────────────────────
+
+Week 0:  Caio cleans Trade, hires Librarian
+Week 1:  Librarian sets up, hires Conductor
+Week 2:  Conductor sources MC + first PMs
+Week 3+: Flash sprints begin (PM co-founders)
+Week 6:  Site live, content accumulating
+Week 6-10: Expert reviews, convergence
+Week 10-12: All TUPs verified, imagination LOCKS
+                    │
+                    ▼
+            ┌─── BRIDGE ───┐
+            │   FUNDING     │
+            │   EVENT       │
+            └───────────────┘
+                    │
+                    ▼
+                                          Phase 0: Build Labor Chain (VA → CoS → Recruiter → Operator)
+                                          Phase 1: Table Set (everything ready to sell)
+                                          Phase 2: First Blood (first sales)
+                                          Phase 3: Winner Found (profitable unit economics)
+                                          Phase 4: Scale → Graduation ($100K MRR)
+```
+
+**Key transitions at the bridge:**
+- The **Conductor** from Model A may evolve into or be replaced by the **VA** in Model B (same function: sourcing and screening — different targets)
+- **PM co-founders** who performed well in flash sprints can become full-time paid operators on the implementation side
+- The **Librarian** role informs but is distinct from the **Compliance Manager** in Model B
+- The locked imagination passet becomes the Operator's operating manual
+- Capital from the raise funds the Model B execution
+
+---
+
+## 5. Studio Phase: Flash Teams Execution (Pre-Funding)
+
+### The Sequence
+
+| Week | Action | Owner | Produces | Verification |
+|------|--------|-------|----------|-------------|
+| 0 | Caio cleans Trade (tab order, Directory, TUP structure) | Caio | Legible Trade file | Every TUP has P-, C-, IP-, V- tabs. Directory accurate. |
+| 0 | Caio hires Librarian (Elaine) | Caio | Librarian contracted | Onboarded, has Trade access, understands architecture. |
+| 1 | Librarian reads Directory, Taxonomy, Role Rosters | Librarian | Architecture understanding | Can answer "where is X" for any TUP. |
+| 1 | Librarian sets up Google Drive (master + working folders) | Librarian | Folder structure | Read-only master. Empty working folders per role. |
+| 1 | Librarian hires Conductor | Librarian | Conductor contracted | Has Recruiting Operations tab. Platforms set up. |
+| 1-2 | Conductor sources MC + first PM co-founders | Conductor | Candidate pipelines | Postings live on Upwork, LinkedIn, communities. 5+ conversations. |
+| 2 | MC hired, first conversations begin | Conductor → MC | On-air content | Entrance conversations recorded. Cast page started. |
+| 3+ | PM co-founder flash sprints begin (BCL-1 first) | PM + Claude | TUP first drafts | All content tabs drafted. No TBDs. Assumptions flagged. |
+| 3+ | Conductor continues sourcing PMs for remaining clusters | Conductor | Pipeline | 7-10 PM co-founders sourced across clusters. |
+| 6 | Site goes live (password-protected) | Product person (flash) | Live site | MC updates accumulating. Cast page growing. |
+| 6-10 | Expert reviewers flash in behind PM sprints | Expert reviewers | Grades per TUP | Each cluster's TUPs graded A/B/C/D/F. C or below → revision sprint. |
+| 10-12 | V-tabs converge on A/B grades | Librarian confirms | Locked imagination | Every TUP verified. Master file locked. Published reference. |
+
+### Studio Phase Roles Quick Reference
+
+| Role | Type | Duration | Equity | Who They Report To |
+|------|------|----------|--------|-------------------|
+| Caio | One-time | Week 0 (1 week) | 1-2% | Danilo |
+| Librarian (Elaine) | Persistent | 12+ weeks | 1-2% | Caio (then self-directed) |
+| Conductor | Persistent | 12+ weeks | 1-2% | Librarian |
+| MC | Persistent | 12+ weeks | 1-2% | Self-directed (content schedule) |
+| PM co-founder (×7-10) | Flash | 2-3 weeks each | 0.25-0.5% each | Librarian (handoff), MC (on-air) |
+| Expert reviewer (×8-12) | Flash | 2 weeks each | 0.1-0.25% each | PM (scope), Librarian (filing) |
+| Funnel builder | Flash | 2-3 weeks | 0.25-0.5% | Conductor (logistics) |
+| Series producer | Flash | 1-2 weeks | 0.25-0.5% | MC (narrative) |
+| Product person | Flash | 2-3 weeks | 0.25-0.5% | Conductor (logistics) |
+| Danilo | On-call SME | As needed | Founder equity | N/A |
+
+**Total equity distributed pre-raise:** ~15-20% across ~40-60 contributors
+**Danilo / Studio 4 retains:** ~50-60%
+**Option pool:** ~10-15%
+
+---
+
+## 6. Business Phase: The Execution Phases (Post-Funding)
+
+The business phase executes in five sequential phases. Each phase has an entry gate, specific tasks with owners, and a verified exit gate.
 
 **Status states:** Not Started → In Progress → Done → **Verified**
 > "Verified" means someone checked the output against verification criteria and it passed.
 
 ---
 
-### Phase 0: Build the Labor Chain (Weeks 1–11)
+### Phase 0: Build the Labor Chain (Weeks 12–22)
 
-**What happens:** The Studio builds the hiring sequence that produces a fully equipped Operator, without the founder becoming the bottleneck.
+**What happens:** The Studio builds the hiring sequence that produces a fully equipped Operator, without the founder becoming the bottleneck. The Conductor from the studio phase may transition into or be replaced by the VA role here.
 
-**Entry gate:** Studio has the complete ODD, all role-engineered JDs, and the hiring kits.
+**Entry gate:** Imagination passet locked. Funding secured or committed. Studio has the complete ODD, all role-engineered JDs, and the hiring kits.
 
 | # | Task | Owner | Timeline | Verified By | How We Know It's Done |
 |---|------|-------|----------|-------------|----------------------|
@@ -165,7 +269,7 @@ The Trade executes in five sequential phases. Each phase has an entry gate, spec
 
 ---
 
-### Phase 1: Table Set — Everything Ready to Launch (Weeks 11–15)
+### Phase 1: Table Set — Everything Ready to Launch (Weeks 22–26)
 
 **What happens:** The Operator, with the franchise package in hand, builds everything needed so that a stranger could click an ad, watch the VSL, buy, and receive a product.
 
@@ -196,7 +300,7 @@ The Trade executes in five sequential phases. Each phase has an entry gate, spec
 
 ---
 
-### Phase 2: First Blood — First Sales (Weeks 15–19)
+### Phase 2: First Blood — First Sales (Weeks 26–30)
 
 **What happens:** Ads go live. Real money is spent. Real customers appear. The funnel gets tested against reality.
 
@@ -216,7 +320,7 @@ The Trade executes in five sequential phases. Each phase has an entry gate, spec
 
 ---
 
-### Phase 3: Winner Found — Profitable Unit Economics (Weeks 19–27)
+### Phase 3: Winner Found — Profitable Unit Economics (Weeks 30–38)
 
 **What happens:** Systematic optimization until unit economics are profitable at scale. This is where the winning creative, offer, and audience are identified and locked.
 
@@ -236,7 +340,7 @@ The Trade executes in five sequential phases. Each phase has an entry gate, spec
 
 ---
 
-### Phase 4: Scale — Path to $100K MRR (Weeks 27–48)
+### Phase 4: Scale — Path to $100K MRR (Weeks 38–60)
 
 **What happens:** Controlled scaling of what works. Team expansion. Full automation deployment. Path to graduation.
 
@@ -257,7 +361,7 @@ The Trade executes in five sequential phases. Each phase has an entry gate, spec
 
 ---
 
-## 5. The Execution Gap — What Must Be Closed
+## 7. The Execution Gap — What Must Be Closed
 
 The difference between a competitor at nine figures and IonWave at zero is **not knowledge — it's execution**. Every gap below is an execution gap, not an information gap.
 
@@ -291,7 +395,7 @@ The difference between a competitor at nine figures and IonWave at zero is **not
 
 ---
 
-## 6. Critical Path and Dependencies
+## 8. Critical Path and Dependencies
 
 The critical path is the longest chain of dependencies. If anything on this path slips, everything downstream slips.
 
@@ -334,7 +438,7 @@ Nilo + Claude produce M0 thesis (W0)
 
 ---
 
-## 7. The TUP Lifecycle (How Individual Pieces Move)
+## 9. The TUP Lifecycle (How Individual Pieces Move)
 
 Each piece of the Trade (each TUP — Trade Unit Project) moves through its own lifecycle:
 
@@ -355,24 +459,42 @@ Each piece of the Trade (each TUP — Trade Unit Project) moves through its own 
 
 ---
 
-## 8. How to Read This as an Operator or VP
+## 10. How to Read This as an Operator or VP
+
+### If you're a Flash Team contributor (PM co-founder, expert, specialist):
+1. You are in the **Studio Phase** (Section 5). You flash in for a scoped sprint and dissolve when done.
+2. The Librarian prepares your working folder with INSTRUCTIONS.md + your specific tabs
+3. The MC records your entrance conversation (this is your "interview" AND your onboarding)
+4. You produce your deliverable with Claude as co-pilot. 1-4 weeks. No meetings, no standups.
+5. The MC records your closing conversation. Your contribution lives on the cast page.
+6. Your equity is small (0.1-0.5%) because your job is small. The Trade does the coordination.
+
+### If you're the Librarian, Conductor, or MC:
+1. You are a **persistent role** in the Studio Phase — you stay for the full 12+ week production cycle
+2. The Librarian owns custody of the Trade and routes dependencies between contributors
+3. The Conductor sources every flash team member and manages the pipeline
+4. The MC makes every entrance and exit visible — your conversations ARE the content
+5. After funding, your role may evolve: Conductor → VA role, Librarian informs Compliance Manager
 
 ### If you're the Operator:
-1. You receive the franchise package at Phase 1 entry (after the Labor Chain delivers you)
-2. Your job starts at **Phase 1, Task 1.1**: form the entity, get the product, build the store, produce the creative
-3. You own every task in Phases 1–4. The CoS and CM verify your work against the criteria in the rightmost column
-4. You succeed when you hit **Graduation** (Phase 4.8): $100K MRR, positive margins, full team, no Studio dependency
-5. Your capital unlocks are gated: you get more money as you hit verified milestones
+1. You enter at the **Business Phase** (Section 6), after the imagination passet is locked and funding is secured
+2. You receive the franchise package at Phase 1 entry (after the Labor Chain delivers you)
+3. Your job starts at **Phase 1, Task 1.1**: form the entity, get the product, build the store, produce the creative
+4. You own every task in Phases 1–4. The CoS and CM verify your work against the criteria in the rightmost column
+5. You succeed when you hit **Graduation** (Phase 4.8): $100K MRR, positive margins, full team, no Studio dependency
+6. Your capital unlocks are gated: you get more money as you hit verified milestones
 
 ### If you're the VP / Investor:
-1. The Trade is a stage-gated investment vehicle. Capital unlocks only after verified milestones
-2. **Phase 0** is Studio risk (building the team). Phase 0 complete = labor chain built, Operator hired
-3. **Phase 1** is setup risk. Phase 1 complete = everything ready to sell
-4. **Phase 2** is market risk. Phase 2 complete = customers exist, funnel works
-5. **Phase 3** is unit economics risk. Phase 3 complete = profitable at test scale
-6. **Phase 4** is scaling risk. Phase 4 complete = the business runs independently
-7. The Compliance Manager (L4) provides independent monitoring — they report to the Trade/investors, not the Operator
-8. Graduation means the business runs without Studio input. That's the end state.
+1. The Trade has **two phases of risk**: Studio Phase (building the Trade, ~12 weeks) then Business Phase (executing it, ~48 weeks)
+2. The **Studio Phase** is imagination risk — will the Trade be validated? You can watch it in real time via the site and MC updates.
+3. The **funding event** at Week 10-12 is the bridge. Imagination locks → capital deploys → business execution begins.
+4. **Phase 0** is hiring risk (building the team). Phase 0 complete = Operator hired and onboarded
+5. **Phase 1** is setup risk. Phase 1 complete = everything ready to sell
+6. **Phase 2** is market risk. Phase 2 complete = customers exist, funnel works
+7. **Phase 3** is unit economics risk. Phase 3 complete = profitable at test scale
+8. **Phase 4** is scaling risk. Phase 4 complete = the business runs independently
+9. The Compliance Manager (L4) provides independent monitoring — they report to the Trade/investors, not the Operator
+10. Graduation means the business runs without Studio input. That's the end state.
 
 ### If you're the CoS:
 1. You verify the Operator's work against the criteria in this document
@@ -382,7 +504,7 @@ Each piece of the Trade (each TUP — Trade Unit Project) moves through its own 
 
 ---
 
-## 9. Trade Evolution (Where This Goes)
+## 11. Trade Evolution (Where This Goes)
 
 | Phase | What The Trade Is | Revenue |
 |-------|------------------|---------|
@@ -419,3 +541,8 @@ This document synthesizes the following tabs from the ops model (v10):
 | Parallel Execution Map | 31 | Dependencies, critical path, workstream timing |
 | TUP Lifecycle Phases | 1178 | Per-TUP lifecycle (0–7), imagination/implementation bridge |
 | Trade Evolution Model | 59 | Long-term vision: spreadsheet → textbook → product → network |
+| Launch Narrative | 4 | Studio phase sequence, role transitions, real names |
+| Flash Teams Model | 3 | Stanford flash teams applied to Trade, persistent vs flash roles |
+| Revised Roles | 6 | Flash teams role registry, equity budget, headcount |
+| Librarian Role | 10 | First hire spec, custody model, comp, sequence |
+| Labor Sequence Gantt | 51 | 54-week timeline, Nilo time budget, full hiring chain |
