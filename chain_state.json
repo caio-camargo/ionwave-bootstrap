@@ -1,0 +1,398 @@
+{
+  "version": "1.0.0",
+  "schema_version": "1",
+  "last_updated": "2026-03-06",
+  "updated_by": "system_init",
+
+  "cascade_status": "pre_activation",
+  "cascade_started": null,
+  "cascade_model": "sequential",
+
+  "activation_blockers": [
+    {
+      "id": "DEC-CHAIN-003",
+      "description": "Approval authority at handoffs — who makes the final call at each node transition",
+      "impact": "Cannot define quality gates without this",
+      "owner": "Danilo"
+    },
+    {
+      "id": "DEC-CHAIN-005",
+      "description": "VA budget amount — hourly vs retainer, specific dollar amount",
+      "impact": "Cannot hire VA without compensation defined",
+      "owner": "Danilo"
+    },
+    {
+      "id": "DEC-CHAIN-007",
+      "description": "Pre-entity equity instruments — how to commit equity before entity formation",
+      "impact": "Cannot offer equity to MBA intern or VP without legal structure",
+      "owner": "Danilo + legal"
+    }
+  ],
+
+  "nodes": {
+    "va": {
+      "cascade_level": "L1",
+      "status": "not_started",
+      "person": null,
+      "contact": null,
+      "start_date": null,
+      "end_date": null,
+      "hired_by": "Danilo",
+      "finds": "mba",
+      "kickoff_package": "VA_KICKOFF_PACKAGE.md",
+      "compensation": {
+        "type": "cash",
+        "amount": null,
+        "notes": "DEC-CHAIN-005 — amount TBD"
+      },
+      "deliverables": {
+        "DEL-VA-001": {
+          "name": "Brief Acknowledgment",
+          "status": "pending",
+          "trigger": "VA receives VA Package",
+          "due_relative": "+48h from start",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-VA-002": {
+          "name": "Sourcing Plan",
+          "status": "pending",
+          "trigger": "DEL-VA-001 accepted",
+          "due_relative": "+7d from DEL-VA-001",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-VA-003": {
+          "name": "Weekly Pipeline Report",
+          "status": "pending",
+          "trigger": "DEL-VA-002 accepted",
+          "due_relative": "Every Friday",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "submission_log": [],
+          "notes": null
+        },
+        "DEL-VA-004": {
+          "name": "Candidate Shortlist",
+          "status": "pending",
+          "trigger": "3+ candidates pass screening",
+          "due_relative": "Week 4 (hard deadline: Week 6)",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-VA-005": {
+          "name": "Final Recommendation",
+          "status": "pending",
+          "trigger": "Shortlist reviewed by approver",
+          "due_relative": "+7d from shortlist",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        }
+      },
+      "pipeline": {
+        "total_contacted": 0,
+        "total_screened": 0,
+        "total_advanced": 0,
+        "total_rejected": 0,
+        "candidates": []
+      },
+      "alerts": [],
+      "fallback_triggered": false,
+      "fallback_reason": null
+    },
+
+    "mba": {
+      "cascade_level": "L2",
+      "status": "not_started",
+      "person": null,
+      "contact": null,
+      "start_date": null,
+      "end_date": null,
+      "hired_by": "va",
+      "finds": "vp",
+      "kickoff_package": "MBA_INTERN_KICKOFF_PACKAGE.md",
+      "compensation": {
+        "type": "equity",
+        "amount": null,
+        "notes": "DEC-CHAIN-001 — equity confirmed, amount TBD"
+      },
+      "deliverables": {
+        "DEL-MBA-001": {
+          "name": "Onboarding Acknowledgment",
+          "status": "pending",
+          "trigger": "MBA receives MBA Brief + Trade access",
+          "due_relative": "+72h from start",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-MBA-002": {
+          "name": "VP Sourcing Plan",
+          "status": "pending",
+          "trigger": "DEL-MBA-001 accepted",
+          "due_relative": "+7d from DEL-MBA-001",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-MBA-003": {
+          "name": "Biweekly Outreach Report",
+          "status": "pending",
+          "trigger": "DEL-MBA-002 accepted",
+          "due_relative": "Every other Friday",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "submission_log": [],
+          "notes": null
+        },
+        "DEL-MBA-004": {
+          "name": "VP Candidate Shortlist",
+          "status": "pending",
+          "trigger": "2+ VP candidates pass screening",
+          "due_relative": "Week 8 (hard deadline: Week 12)",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-MBA-005": {
+          "name": "VP Recommendation & Handoff",
+          "status": "pending",
+          "trigger": "Shortlist reviewed and approved",
+          "due_relative": "+14d from shortlist",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        }
+      },
+      "pipeline": {
+        "total_contacted": 0,
+        "total_responded": 0,
+        "total_screened": 0,
+        "total_evaluated": 0,
+        "total_shortlisted": 0,
+        "total_rejected": 0,
+        "candidates": []
+      },
+      "alerts": [],
+      "fallback_triggered": false,
+      "fallback_reason": null
+    },
+
+    "vp": {
+      "cascade_level": "L3",
+      "status": "not_started",
+      "person": null,
+      "contact": null,
+      "start_date": null,
+      "end_date": null,
+      "hired_by": "mba",
+      "finds": "operator",
+      "kickoff_package": "VP_KICKOFF_PACKAGE.md",
+      "compensation": {
+        "type": "equity",
+        "amount": null,
+        "notes": "DEC-CHAIN-002 — 5-10% range, exact terms TBD"
+      },
+      "integration_gate": {
+        "status": "not_started",
+        "submitted": null,
+        "evaluated": null,
+        "result": null,
+        "attempts": 0,
+        "notes": null
+      },
+      "deliverables": {
+        "DEL-VP-001": {
+          "name": "Integration Work Artifact",
+          "status": "pending",
+          "trigger": "VP receives VP Brief + full Trade access",
+          "due_relative": "+14d from start",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": "Quality gate — must pass before Tracks A and B activate"
+        },
+        "DEL-VP-002": {
+          "name": "Capital Formation Pipeline",
+          "status": "pending",
+          "trigger": "DEL-VP-001 accepted",
+          "due_relative": "Biweekly after integration",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "submission_log": [],
+          "notes": null
+        },
+        "DEL-VP-003": {
+          "name": "Operator Sourcing Plan",
+          "status": "pending",
+          "trigger": "DEL-VP-001 accepted",
+          "due_relative": "+7d from DEL-VP-001",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-VP-004": {
+          "name": "Operator Shortlist",
+          "status": "pending",
+          "trigger": "2+ candidates pass VP screening",
+          "due_relative": "Week 4 (hard deadline: Week 6)",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        },
+        "DEL-VP-005": {
+          "name": "Operator Confirmation & Handoff",
+          "status": "pending",
+          "trigger": "Operator selected, contract negotiated",
+          "due_relative": "+14d from shortlist",
+          "due_absolute": null,
+          "submitted": null,
+          "evaluated": null,
+          "result": null,
+          "notes": null
+        }
+      },
+      "capital_formation": {
+        "target_amount": 50000,
+        "target_min": 30000,
+        "instrument": "SAFE",
+        "valuation_cap_range": [250000, 500000],
+        "committed": 0,
+        "wired": 0,
+        "investors_contacted": 0,
+        "investors_meeting": 0,
+        "investors_committed": 0,
+        "pipeline": []
+      },
+      "operator_pipeline": {
+        "total_contacted": 0,
+        "total_screened": 0,
+        "total_evaluated": 0,
+        "total_shortlisted": 0,
+        "total_rejected": 0,
+        "candidates": []
+      },
+      "alerts": [],
+      "fallback_triggered": false,
+      "fallback_reason": null
+    },
+
+    "operator": {
+      "cascade_level": "L4",
+      "status": "not_started",
+      "person": null,
+      "contact": null,
+      "start_date": null,
+      "end_date": null,
+      "hired_by": "vp",
+      "finds": null,
+      "compensation": {
+        "base_monthly": 4000,
+        "equity_pct": 15,
+        "vesting": "4yr/1yr cliff",
+        "bonuses": {
+          "first_blood": 5000,
+          "winner_found": 10000,
+          "100k_mrr": 25000
+        }
+      },
+      "certification": {
+        "status": "not_started",
+        "week1_business_context": null,
+        "week2_operational_systems": null,
+        "week3_execution_plans": null,
+        "calibration_session": null,
+        "certified": false
+      },
+      "execution_phase": null,
+      "alerts": [],
+      "notes": null
+    }
+  },
+
+  "transitions": [
+    {
+      "id": "T1",
+      "from": "va",
+      "to": "mba",
+      "trigger_deliverable": "DEL-VA-005",
+      "approval_authority": null,
+      "approval_authority_note": "DEC-CHAIN-003 — TBD",
+      "status": "pending",
+      "date": null
+    },
+    {
+      "id": "T2",
+      "from": "mba",
+      "to": "vp",
+      "trigger_deliverable": "DEL-MBA-005",
+      "approval_authority": null,
+      "approval_authority_note": "DEC-CHAIN-003 — TBD",
+      "status": "pending",
+      "date": null
+    },
+    {
+      "id": "T3",
+      "from": "vp",
+      "to": "operator",
+      "trigger_deliverable": "DEL-VP-005",
+      "approval_authority": null,
+      "approval_authority_note": "DEC-CHAIN-003 — TBD (likely includes calibration session)",
+      "status": "pending",
+      "date": null
+    }
+  ],
+
+  "timeline": {
+    "model": "sequential_conservative",
+    "estimated_total_weeks": "26-39",
+    "phases": [
+      { "phase": "VA finds MBA", "weeks": "1-6", "node": "va" },
+      { "phase": "MBA finds VP", "weeks": "5-18", "node": "mba" },
+      { "phase": "VP integration", "weeks": "2", "node": "vp" },
+      { "phase": "VP finds Operator", "weeks": "7-24", "node": "vp" },
+      { "phase": "Operator onboards (M1 cert)", "weeks": "3", "node": "operator" },
+      { "phase": "Execution to Day 90", "weeks": "12", "node": "operator" }
+    ]
+  },
+
+  "event_log": [
+    {
+      "timestamp": "2026-03-06T00:00:00Z",
+      "event": "chain_state_initialized",
+      "actor": "system",
+      "details": "Initial chain_state.json created. 3 activation blockers identified. All nodes at not_started."
+    }
+  ]
+}
