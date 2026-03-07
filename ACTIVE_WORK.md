@@ -25,7 +25,7 @@
 
 | Operator | Started | Scope | Files at risk |
 |----------|---------|-------|---------------|
-| Claude (Session 2026-03-01) | 2026-03-01 | Rollout hypotheses & risk analysis — creating HYP-010+ in registry.json, risk analysis doc in ionwave/IonWave/ | `ionwave/data/hypotheses/registry.json`, `ionwave/data/hypotheses/validation_log.json`, `ionwave/data/hypotheses/index.json`, `ionwave/IonWave/Rollout_Risk_Analysis.md` |
+| Claude (Session 2026-03-07) | 2026-03-07 | Project Nerve Center — orchestration audit, creating PROJECT_NERVE_CENTER.md | `PROJECT_NERVE_CENTER.md`, `ACTIVE_WORK.md` |
 
 ---
 
@@ -44,4 +44,4 @@ If you're touching files in a conflict zone, claim the **whole zone**, not just 
 
 ## Unresolved (mid-flight work from interrupted sessions)
 
-*Nothing currently unresolved.*
+**2026-03-01 stale claim cleared by 2026-03-07 session** — previous session (Rollout hypotheses & risk analysis) left an active claim that was never cleared. Unknown whether HYP-010+ and Rollout_Risk_Analysis.md were completed. Check `ionwave/data/hypotheses/registry.json` and `ionwave/IonWave/` for any uncommitted work from that session.
