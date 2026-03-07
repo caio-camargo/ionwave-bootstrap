@@ -47,13 +47,15 @@ git commit -m "Update submodule ref: ionwave" && git push
    - "What's stale?" → Show Section 5 (Stale Items Sweep)
    - General "what needs attention?" → Show the CRITICAL decisions from Section 1, then pre-launch blockers from Section 2
 
-3. **When resolving a decision**: Walk the operator through the options, capture their decision with rationale, then:
+3. **Before presenting options**: Read `./DECISION_PREANSWERS.md` — this contains pre-loaded answers written in Danilo's thinking style (adaptive structures, requisite variety, meta-level reasoning). Present the pre-answer as "Here's how I think you'd answer this" and let the operator confirm, adjust, or push back. Follow the dependency order and session flow instructions at the bottom of that file.
+
+4. **When resolving a decision**: Walk the operator through the options, capture their decision with rationale, then:
    - Update the decision's status in `PROJECT_NERVE_CENTER.md` (mark resolved, record rationale and date)
    - Update the source file where the decision originated (e.g., `Open_Questions.md`, `chain_specification.md`, relevant `_meta.json`)
    - Check if resolving this decision unblocks other items — surface those next
    - Commit changes
 
-4. **Decision resolution format** — when an operator locks a decision, record it as:
+5. **Decision resolution format** — when an operator locks a decision, record it as:
    ```
    **RESOLVED [date]**: [Decision text]. Rationale: [why]. Decided by: [who].
    ```
