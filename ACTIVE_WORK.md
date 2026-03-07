@@ -25,7 +25,7 @@
 
 | Operator | Started | Scope | Files at risk |
 |----------|---------|-------|---------------|
-| Claude (Session 2026-03-01) | 2026-03-01 | Rollout hypotheses & risk analysis — creating HYP-010+ in registry.json, risk analysis doc in ionwave/IonWave/ | `ionwave/data/hypotheses/registry.json`, `ionwave/data/hypotheses/validation_log.json`, `ionwave/data/hypotheses/index.json`, `ionwave/IonWave/Rollout_Risk_Analysis.md` |
+| *(none)* | | | |
 
 ---
 
