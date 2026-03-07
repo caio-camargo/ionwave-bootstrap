@@ -35,6 +35,31 @@ git add ionwave  # or execution, tup-system
 git commit -m "Update submodule ref: ionwave" && git push
 ```
 
+## Open Decisions & Project Nerve Center
+
+**When any operator asks about open decisions, blockers, what needs attention, or project status:**
+
+1. Read `./PROJECT_NERVE_CENTER.md` — this is the single aggregated view of all open items
+2. Present the relevant section based on what the operator asks:
+   - "What decisions need my input?" → Show Section 1 (Open Decisions Register), filtered to decisions owned by or needing that operator
+   - "What's blocking launch?" → Show Section 2 (Pre-Launch Critical Path)
+   - "What's the project status?" → Show Section 6 (Project Status Summary)
+   - "What's stale?" → Show Section 5 (Stale Items Sweep)
+   - General "what needs attention?" → Show the CRITICAL decisions from Section 1, then pre-launch blockers from Section 2
+
+3. **When resolving a decision**: Walk the operator through the options, capture their decision with rationale, then:
+   - Update the decision's status in `PROJECT_NERVE_CENTER.md` (mark resolved, record rationale and date)
+   - Update the source file where the decision originated (e.g., `Open_Questions.md`, `chain_specification.md`, relevant `_meta.json`)
+   - Check if resolving this decision unblocks other items — surface those next
+   - Commit changes
+
+4. **Decision resolution format** — when an operator locks a decision, record it as:
+   ```
+   **RESOLVED [date]**: [Decision text]. Rationale: [why]. Decided by: [who].
+   ```
+
+**The Nerve Center is a live document.** Update it whenever decisions are resolved, blockers are cleared, or new items are discovered. It should always reflect current reality.
+
 ## TUP Workshop Protocol
 
 When workshopping a TUP (Trade Unit Project), always:
